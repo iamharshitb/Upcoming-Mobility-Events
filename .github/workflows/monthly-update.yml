@@ -1,0 +1,52 @@
+name: Monthly events check
+
+on:
+  schedule:
+    - cron: "30 3 1 * *"   # 09:00 IST on the 1st of every month
+  workflow_dispatch:        # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: monthly-events-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Look for new dates and new listings
+        run: python tools/update.py --report update-report.md
+
+      - name: Validate and refresh the built-in snapshot
+        run: python tools/build.py
+
+      - name: Open the monthly pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          MONTH=$(date -u +%Y-%m)
+          BRANCH="events-update-$MONTH"
+          BASE=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+          git config user.name "events-bot"
+          git config user.email "events-bot@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add events.json index.html
+          if git diff --cached --quiet; then
+            echo "Nothing changed since the last run; no pull request needed."
+            exit 0
+          fi
+          git commit -m "Monthly events check $MONTH"
+          git push --force origin "$BRANCH"
+          gh pr create --base "$BASE" --head "$BRANCH" \
+            --title "Events update $(date -u '+%B %Y')" --body-file update-report.md \
+            || gh pr edit "$BRANCH" --body-file update-report.md
