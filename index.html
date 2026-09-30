@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>India Mobility Events</title>
+<meta name="description" content="Upcoming mobility-ecosystem events across India, filterable by sector, month and region.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5eff'/%3E%3Cpath d='M7 20h18M9 20l2-6h10l2 6M12 24a2 2 0 1 0 0-.01M20 24a2 2 0 1 0 0-.01' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --text:#151a22; --muted:#5a6473; --line:#e2e5eb; --line-strong:#cdd2db;
+  --accent:#1f5eff; --accent-ink:#ffffff; --accent-soft:#e9efff;
+  --ok:#0d6b36; --ok-bg:#e2f4e9; --warn:#7f5200; --warn-bg:#fff0cc; --idle:#414b5a; --idle-bg:#e9ecf1;
+  --g-core:#c2410c; --g-energy:#047857; --g-tech:#4f46e5; --g-logistics:#0e7490;
+  --shadow:0 1px 2px rgba(15,23,42,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f1319; --surface:#171c24; --text:#e8ebf0; --muted:#98a2b3; --line:#262d38; --line-strong:#374151;
+    --accent:#6b93ff; --accent-ink:#0b1020; --accent-soft:#1b2540;
+    --ok:#66d597; --ok-bg:#12291d; --warn:#f2c265; --warn-bg:#2f2510; --idle:#b5bdc9; --idle-bg:#252b35;
+    --g-core:#fb923c; --g-energy:#34d399; --g-tech:#a5b4fc; --g-logistics:#22d3ee;
+    --shadow:none;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+a{color:var(--accent)}
+
+header.top{padding:28px 0 8px}
+h1{margin:0;font-size:26px;letter-spacing:-.01em;line-height:1.2}
+.sub{margin:6px 0 0;color:var(--muted)}
+
+.banner{margin:12px 0;padding:10px 14px;border:1px solid var(--line-strong);border-left:4px solid var(--warn);background:var(--warn-bg);color:var(--text);border-radius:8px;font-size:14px}
+
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0 16px;box-shadow:var(--shadow)}
+.row1{display:grid;grid-template-columns:minmax(220px,2fr) repeat(4,minmax(120px,1fr));gap:10px}
+.row1 label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted);font-weight:600}
+input[type=search],select{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line-strong);border-radius:8px;padding:8px 10px;min-height:38px;width:100%}
+input[type=search]::placeholder{color:var(--muted)}
+fieldset.sectors{border:0;margin:12px 0 0;padding:0}
+fieldset.sectors legend{font-size:12px;font-weight:600;color:var(--muted);padding:0;margin-bottom:6px}
+.grp-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 6px}
+.grp-label{font-size:12px;color:var(--muted);min-width:170px}
+.chip{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;color:var(--text);background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:4px 10px;cursor:pointer;min-height:30px}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip .n{font-size:11px;opacity:.75;font-variant-numeric:tabular-nums}
+.chip[data-zero=true]:not([aria-pressed=true]){opacity:.5}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--gc,var(--muted));flex:none}
+.chip[aria-pressed=true] .dot{box-shadow:0 0 0 1.5px var(--accent-ink)}
+.g-core{--gc:var(--g-core)} .g-energy{--gc:var(--g-energy)} .g-tech{--gc:var(--g-tech)} .g-logistics{--gc:var(--g-logistics)}
+.row3{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+#count{margin-right:auto;color:var(--muted);font-size:14px}
+button.btn{font:inherit;font-size:13px;color:var(--text);background:var(--surface);border:1px solid var(--line-strong);border-radius:8px;padding:6px 12px;cursor:pointer;min-height:34px}
+button.btn:hover{border-color:var(--accent)}
+button.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+.tablewrap{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+thead th{position:sticky;top:0;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:var(--surface);padding:10px 12px;border-bottom:1px solid var(--line-strong);line-height:1.25}
+tbody td{padding:12px;vertical-align:top;border-bottom:1px solid var(--line);font-size:14px;overflow-wrap:break-word}
+tr.ev:hover td{background:color-mix(in srgb,var(--accent-soft) 45%,transparent)}
+tr.grp th{text-align:left;font-size:13px;padding:10px 12px;background:var(--bg);color:var(--text);border-bottom:1px solid var(--line);border-top:1px solid var(--line)}
+tr.grp th span{color:var(--muted);font-weight:400}
+.name{font-weight:600;line-height:1.35}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center}
+.badge{display:inline-flex;align-items:center;font-size:12px;font-weight:600;border-radius:999px;padding:2px 9px}
+.badge.confirmed{color:var(--ok);background:var(--ok-bg)}
+.badge.tentative{color:var(--warn);background:var(--warn-bg)}
+.badge.awaiting{color:var(--idle);background:var(--idle-bg)}
+button.tog{font:inherit;font-size:12px;color:var(--accent);background:none;border:0;padding:2px 4px;cursor:pointer;text-decoration:underline}
+.pills{display:flex;flex-wrap:wrap;gap:4px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;line-height:1.3;border:1px solid var(--line-strong);border-radius:999px;padding:2px 8px}
+.basis{display:block;font-size:11px;color:var(--muted)}
+a.go{font-weight:600;text-decoration:none}
+a.go:hover{text-decoration:underline}
+tr.detail td{background:var(--bg);padding:12px 16px 14px}
+tr.detail dl{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;margin:0;font-size:13px}
+tr.detail dt{color:var(--muted)}
+tr.detail dd{margin:0;overflow-wrap:anywhere}
+#empty{padding:36px 16px;text-align:center;color:var(--muted)}
+#empty button{margin-top:10px}
+footer{margin:18px 0 40px;color:var(--muted);font-size:13px;max-width:900px}
+footer p{margin:6px 0}
+
+@media (max-width:1099px){
+  .row1{grid-template-columns:1fr 1fr}
+  .row1 label.search{grid-column:1/-1}
+  .grp-label{min-width:100%}
+  .tablewrap{background:none;border:0;box-shadow:none;overflow:visible}
+  table,tbody{display:block}
+  thead,colgroup{display:none}
+  tr.ev{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 10px;box-shadow:var(--shadow)}
+  tr.ev td,tr.ev:hover td{display:block;padding:0;border:0;background:none;min-width:0}
+  tr.ev td.c-name{grid-column:1/-1;width:auto}
+  tr.ev td.c-loc{grid-column:span 2}
+  tr.ev td.c-sector,tr.ev td.c-org{grid-column:span 3}
+  tr.ev td.c-link{align-self:end;text-align:right}
+  tr.ev td[data-label]::before{content:attr(data-label);display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  tr.grp,tr.grp th{display:block;background:none;border:0;padding:12px 2px 6px}
+  tr.detail{display:block;margin:-6px 0 10px}
+  tr.detail td{display:block;border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+  tr.detail dl{grid-template-columns:150px 1fr}
+}
+@media (max-width:639px){
+  .row1{grid-template-columns:1fr 1fr;gap:8px}
+  .chip{font-size:12.5px;padding:3px 9px;min-height:28px}
+  h1{font-size:22px}
+  tr.ev{grid-template-columns:1fr 1fr}
+  tr.ev td.c-loc,tr.ev td.c-sector,tr.ev td.c-org{grid-column:1/-1}
+  tr.ev td.c-month{order:1} tr.ev td.c-date{order:2} tr.ev td.c-loc{order:3}
+  tr.ev td.c-aud{order:4} tr.ev td.c-link{order:5} tr.ev td.c-sector{order:6} tr.ev td.c-org{order:7}
+  tr.detail dl{grid-template-columns:1fr}
+  tr.detail dt{margin-top:6px}
+}
+@media print{
+  .filters,button.tog,#banner{display:none}
+  body{background:#fff;color:#000}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1 id="title">India Mobility Events</h1>
+    <p class="sub" id="sub">Loading events…</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="banner" class="banner" role="status" hidden></div>
+
+  <section class="filters" aria-label="Filters">
+    <div class="row1">
+      <label class="search"><span>Search</span>
+        <input id="q" type="search" placeholder="Event, organiser, city or keyword" autocomplete="off">
+      </label>
+      <label><span>Month</span><select id="month"></select></label>
+      <label><span>Region</span><select id="region"></select></label>
+      <label><span>Status</span>
+        <select id="status">
+          <option value="">All statuses</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="tentative">Tentative</option>
+          <option value="awaiting">Awaiting date</option>
+        </select>
+      </label>
+      <label><span>Sort by</span>
+        <select id="sort">
+          <option value="date">Date (soonest)</option>
+          <option value="name">Name (A–Z)</option>
+          <option value="audience">Audience (largest)</option>
+        </select>
+      </label>
+    </div>
+    <fieldset class="sectors"><legend>Sector (pick one or more)</legend><div id="chips"></div></fieldset>
+    <div class="row3">
+      <span id="count" aria-live="polite"></span>
+      <button class="btn" id="clear" type="button">Clear filters</button>
+      <button class="btn primary" id="csv" type="button">Download CSV</button>
+    </div>
+  </section>
+
+  <div class="tablewrap">
+    <table id="tbl">
+      <caption class="sr">Upcoming mobility events in India</caption>
+      <colgroup><col style="width:22%"><col style="width:8%"><col style="width:8%"><col style="width:13%"><col style="width:9%"><col style="width:18%"><col style="width:14%"><col style="width:8%"></colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Event</th><th scope="col">Month</th><th scope="col">Date</th>
+          <th scope="col">Location</th><th scope="col">Expected audience</th>
+          <th scope="col">Sector</th><th scope="col">Organiser</th><th scope="col">Link</th>
+        </tr>
+      </thead>
+      <tbody id="body"></tbody>
+    </table>
+    <div id="empty" hidden>
+      <div>No events match these filters.</div>
+      <button class="btn" id="clear2" type="button">Clear filters</button>
+    </div>
+  </div>
+
+  <footer>
+    <p><strong>Always confirm on the organiser's page</strong> — dates and venues change. Events drop off this list automatically once they end.</p>
+    <p><strong>Status:</strong> <em>Confirmed</em> = exact dates from the organiser or two independent sources. <em>Tentative</em> = month-level dates, or exact dates from a single non-organiser source. <em>Awaiting date</em> = a recurring event whose next edition hasn't been announced (the last edition is shown in Details).</p>
+    <p><strong>Audience:</strong> <em>expected</em> = the organiser's target for this edition; <em>last edition</em> = what the previous edition drew; <em>reported</em> = an organiser figure that doesn't say which edition. Blank means no figure was found.</p>
+  </footer>
+</main>
+
+<script id="seed" type="application/json">{"meta":{"title":"India Mobility Events","generated":"2026-09-30","schema_version":1,"sector_groups":[{"id":"core","label":"Core automotive"},{"id":"energy","label":"EV, batteries & alt fuels"},{"id":"tech","label":"Mobility tech & electronics"},{"id":"logistics","label":"Logistics & urban"}],"sectors":[{"id":"oem","label":"Vehicles & OEMs","group":"core"},{"id":"cv","label":"Commercial Vehicles","group":"core"},{"id":"components","label":"Components & Aftermarket","group":"core"},{"id":"ev","label":"EV & Charging","group":"energy"},{"id":"battery","label":"Batteries & Storage","group":"energy"},{"id":"altfuel","label":"Alt Fuels & Hydrogen","group":"energy"},{"id":"policy","label":"Policy & Sustainability","group":"energy"},{"id":"semis","label":"Semiconductors & Electronics","group":"tech"},{"id":"software","label":"Software, AI & Connected","group":"tech"},{"id":"cyber","label":"Cybersecurity","group":"tech"},{"id":"mfg","label":"Manufacturing & Industry 4.0","group":"tech"},{"id":"gcc","label":"GCC & Engineering R&D","group":"tech"},{"id":"logistics","label":"Logistics & Supply Chain","group":"logistics"},{"id":"urban","label":"Urban & Smart Mobility","group":"logistics"}],"regions":["Delhi NCR","Bengaluru","Mumbai","Pune","Chennai","Other India","Pan-India / TBA"],"notes":"start/end are YYYY-MM-DD for exact dates or YYYY-MM for month-level dates; awaiting events have no start. status: confirmed | tentative | awaiting. verified_by: official | secondary | aggregator | tracker. audience.basis: expected | last_edition | reported. approved:false hides an event from the site."},"events":[{"id":"iiev-show-2026","name":"India International EV Show 2026 (8th edition)","start":"2026-10-02","end":"2026-10-04","location":"Auto Cluster Exhibition Centre, Pimpri-Chinchwad, Pune","regions":["Pune"],"sectors":["ev","battery"],"organiser":"Futurex Trade Fair & Events Pvt Ltd","link":"https://iievshow.com/","status":"confirmed","verified_by":"official","source_url":"https://iievshow.com/","audience":{"value":20000,"basis":"expected","note":null},"last_edition":null,"notes":"Runs with the India International Battery Show and Solar Show; the Bharat E-Mobility & Critical Minerals Summit 2026 runs concurrently. Organiser site cites 20,000+ attendees; MTDCNC reports about 15,000 trade visitors.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"iibs-2026","name":"India International Battery Show 2026","start":"2026-10-02","end":"2026-10-04","location":"Auto Cluster Exhibition Centre, Pimpri-Chinchwad, Pune","regions":["Pune"],"sectors":["battery","ev"],"organiser":"Futurex Trade Fair & Events Pvt Ltd","link":"https://iievshow.com/","status":"confirmed","verified_by":"secondary","source_url":"https://mtdcnc.com/news/mtdcnc/pune-to-host-major-ev-battery-and-solar-exhibitions-in-october/","audience":null,"last_edition":null,"notes":"Co-located with the India International EV Show; dates from trade press (MTDCNC, ANI).","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"bharat-biofuel-expo-2026","name":"Bharat Biofuel & Energy Expo 2026","start":"2026-10-02","end":"2026-10-05","location":"Indore","regions":["Other India"],"sectors":["altfuel"],"organiser":null,"link":"https://www.tradeindia.com/tradeshows/automobile/","status":"tentative","verified_by":"aggregator","source_url":"https://www.tradeindia.com/tradeshows/automobile/","audience":null,"last_edition":null,"notes":"Listed on TradeIndia only; organiser and venue not stated. Verify before relying on it.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"imc-2026","name":"India Mobile Congress 2026 (10th edition)","start":"2026-10-07","end":"2026-10-10","location":"Yashobhoomi, New Delhi","regions":["Delhi NCR"],"sectors":["software","semis","cyber"],"organiser":"Department of Telecommunications / Cellular Operators Association of India","link":"https://kpmg.com/in/en/events/2026/10/india-mobile-congress-2026.html","status":"tentative","verified_by":"secondary","source_url":"https://kpmg.com/in/en/events/2026/10/india-mobile-congress-2026.html","audience":null,"last_edition":null,"notes":"Dates from KPMG's event page (theme: Scale Without Boundaries). Organiser taken from the earlier tracker. Confirm on the official IMC site.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"cypher-2026","name":"Cypher 2026","start":"2026-10-07","end":"2026-10-09","location":"KTPO Whitefield, Bengaluru","regions":["Bengaluru"],"sectors":["software","gcc"],"organiser":"Analytics India Magazine","link":"https://cypher.analyticsindiamag.com/","status":"confirmed","verified_by":"official","source_url":"https://cypher.analyticsindiamag.com/","audience":{"value":5000,"basis":"expected","note":null},"last_edition":null,"notes":"Organiser expects 5,000+ AI professionals, 150+ sessions and 100+ exhibitors.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"sae-sdv-2026","name":"Software Development Vehicle 2026 (SAEINDIA)","start":"2026-10-09","end":"2026-10-09","location":"Bengaluru","regions":["Bengaluru"],"sectors":["software","oem"],"organiser":"SAEINDIA","link":"https://www.saeindia.org/event-calendar-2026-2027/","status":"confirmed","verified_by":"official","source_url":"https://www.saeindia.org/event-calendar-2026-2027/","audience":null,"last_edition":null,"notes":"Name as listed on SAEINDIA's 2026-27 event calendar; the calendar gives no venue or link.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"india-electric-motor-expo-2026","name":"India Electric Motor Expo 2026","start":"2026-10-15","end":"2026-10-17","location":"Pune","regions":["Pune"],"sectors":["ev","components"],"organiser":null,"link":"https://www.tradeindia.com/tradeshows/automobile/","status":"tentative","verified_by":"aggregator","source_url":"https://www.tradeindia.com/tradeshows/automobile/","audience":null,"last_edition":null,"notes":"Listed on TradeIndia only; organiser and venue not stated.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"battery-show-india-2026","name":"The Battery Show India 2026 (4th edition)","start":"2026-10-22","end":"2026-10-24","location":"India Expo Mart & Centre, Greater Noida","regions":["Delhi NCR"],"sectors":["battery","ev"],"organiser":"Informa Markets","link":"https://www.thebatteryshowindia.com/","status":"confirmed","verified_by":"official","source_url":"https://www.thebatteryshowindia.com/","audience":{"value":18126,"basis":"reported","note":null},"last_edition":null,"notes":"Organiser page shows 378+ brands, 18,126+ trade visitors, 702 delegates and 126 speakers without saying which edition those figures cover.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"autotechnicia-2026","name":"Autotechnicia 2026","start":"2026-10-22","end":"2026-10-24","location":"Mumbai","regions":["Mumbai"],"sectors":["components","ev"],"organiser":null,"link":"https://www.tradeindia.com/tradeshows/automobile/","status":"tentative","verified_by":"aggregator","source_url":"https://www.tradeindia.com/tradeshows/automobile/","audience":null,"last_edition":null,"notes":"Listed on TradeIndia only; organiser and venue not stated. Sectors inferred from the name.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"umi-2026","name":"Urban Mobility India Conference & Expo 2026 (19th)","start":"2026-10-23","end":"2026-10-25","location":"Bhubaneswar","regions":["Other India"],"sectors":["urban","policy"],"organiser":"Ministry of Housing and Urban Affairs, Government of India","link":"https://urbanmobilityindia.in","status":"tentative","verified_by":"secondary","source_url":"https://www.odisha360.com/events/event-details/19th-urban-mobility-india-conference-2026-03-18","audience":null,"last_edition":null,"notes":"Dates from an Odisha360 event listing; TradeIndia also lists Bhubaneswar. Confirm on the conference site.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"acma-manufacturing-olympiad","name":"2nd Manufacturing Olympiad: HR, LCA and TPM Competition","start":"2026-09","end":"2026-10","location":"Punjab, Uttarakhand & NCR","regions":["Delhi NCR","Other India"],"sectors":["mfg","components"],"organiser":"Automotive Component Manufacturers Association of India, Northern Region","link":"https://www.acma.in/north-events.php","status":"tentative","verified_by":"official","source_url":"https://www.acma.in/north-events.php","audience":null,"last_edition":null,"notes":"ACMA lists Sept/Oct 2026. Exact date, venue and duration are not published.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"acma-kaizen-12","name":"12th Kaizen Competition, Northern Region","start":"2026-10","end":"2026-11","location":"Uttarakhand & NCR","regions":["Delhi NCR","Other India"],"sectors":["mfg","components"],"organiser":"Automotive Component Manufacturers Association of India, Northern Region","link":"https://www.acma.in/north-events.php","status":"tentative","verified_by":"official","source_url":"https://www.acma.in/north-events.php","audience":null,"last_edition":null,"notes":"ACMA lists Oct/Nov 2026. Exact date and venue not published.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"sae-apac-23","name":"Asia Pacific Automotive Engineering Conference (APAC), 23rd edition","start":"2026-11-12","end":"2026-11-14","location":"New Delhi","regions":["Delhi NCR"],"sectors":["oem","components"],"organiser":"SAEINDIA (Society of Indian Automobile Engineers)","link":"https://saeindia.org/apac23/","status":"confirmed","verified_by":"official","source_url":"https://www.saeindia.org/event-calendar-2026-2027/","audience":{"value":1000,"basis":"expected","note":null},"last_edition":null,"notes":"Dates from SAEINDIA's event calendar; the conference brochure cites 1,000+ delegates.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"bts-2026","name":"Bengaluru Tech Summit 2026","start":"2026-11-17","end":"2026-11-19","location":"Bangalore International Exhibition Centre (BIEC), Bengaluru","regions":["Bengaluru"],"sectors":["software","semis","gcc"],"organiser":"MM Activ Sci-Tech Communications; Government of Karnataka / Karnataka Digital Economy Mission","link":"https://www.bengalurutechsummit.com/","status":"confirmed","verified_by":"official","source_url":"https://www.bengalurutechsummit.com/","audience":{"value":50000,"basis":"expected","note":null},"last_edition":null,"notes":"Organiser expects 50,000+ visitors and 1,600+ exhibitors from 60+ countries.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"iwls-mumbai-2026","name":"India Warehousing & Logistics Show 2026","start":"2026-11-22","end":"2026-11-24","location":"Bombay Convention & Exhibition Centre, Mumbai","regions":["Mumbai"],"sectors":["logistics"],"organiser":"Not confirmed (listed by Neventum)","link":"https://www.indiawlshow.com","status":"tentative","verified_by":"secondary","source_url":"https://www.neventum.com/tradeshows/india-warehousing-logistics-show-0","audience":null,"last_edition":null,"notes":"Sources disagree: Neventum lists 22-24 Nov 2026 while 10times lists Oct 2026. Confirm on the show site. Separate from RX India's India Warehousing Show.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"sae-lightweighting-2026","name":"Light-Weighting for Auto/Aero (SAEINDIA)","start":"2026-11-26","end":"2026-11-27","location":"Bengaluru","regions":["Bengaluru"],"sectors":["components","mfg"],"organiser":"SAEINDIA","link":"https://www.saeindia.org/event-calendar-2026-2027/","status":"confirmed","verified_by":"official","source_url":"https://www.saeindia.org/event-calendar-2026-2027/","audience":null,"last_edition":null,"notes":"Name as listed on SAEINDIA's event calendar.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"auto-ev-bharat-2026","name":"Auto EV Bharat 2026","start":"2026-12-09","end":"2026-12-11","location":"KTPO Convention Centre, Whitefield, Bengaluru","regions":["Bengaluru"],"sectors":["ev","battery","components"],"organiser":"TradeIndia Trade Shows","link":"https://tradeshows.tradeindia.com/autoevbharat/","status":"confirmed","verified_by":"official","source_url":"https://tradeshows.tradeindia.com/autoevbharat/","audience":{"value":25000,"basis":"reported","note":null},"last_edition":null,"notes":"Organiser cites 250+ exhibitors and 25,000+ visitors. Assumed to be the tracker's 'Auto EV India' (Bengaluru) row, which had no organiser or date.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"aiss-2026","name":"Annual Information Security Summit (AISS) 2026, 21st edition","start":"2026-12-09","end":"2026-12-11","location":"Pullman Aerocity, New Delhi","regions":["Delhi NCR"],"sectors":["cyber"],"organiser":"Data Security Council of India (DSCI)","link":"https://www.dsci.in/event/aiss-2026/","status":"confirmed","verified_by":"official","source_url":"https://www.dsci.in/event/aiss-2026/","audience":null,"last_edition":null,"notes":null,"last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"evexpo-delhi-2026","name":"EVEXPO New Delhi 2026","start":"2026-12-23","end":"2026-12-25","location":"Pragati Maidan, New Delhi","regions":["Delhi NCR"],"sectors":["ev","components"],"organiser":"Altius Auto Solutions Pvt Ltd","link":"https://evexpo.in/","status":"tentative","verified_by":"aggregator","source_url":"https://www.tradeindia.com/tradeshows/140806/evexpo-new-delhi-2025.html","audience":null,"last_edition":null,"notes":"Dates from TradeIndia. evexpo.in showed an unrelated 20 Dec entry with no year and no 2026 dates; confirm with the organiser.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"sae-auto-cybersecurity-2027","name":"Automotive Cybersecurity (SAEINDIA)","start":"2027-01","end":"2027-01","location":"Pune","regions":["Pune"],"sectors":["cyber","software"],"organiser":"SAEINDIA","link":"https://www.saeindia.org/event-calendar-2026-2027/","status":"tentative","verified_by":"official","source_url":"https://www.saeindia.org/event-calendar-2026-2027/","audience":null,"last_edition":null,"notes":"SAEINDIA calendar gives the month only.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"acma-poka-yoke-2027","name":"9th Poka Yoke and 13th SMED Competition","start":"2027-01","end":"2027-01","location":"NCR","regions":["Delhi NCR"],"sectors":["mfg","components"],"organiser":"Automotive Component Manufacturers Association of India, Northern Region","link":"https://www.acma.in/north-events.php","status":"tentative","verified_by":"official","source_url":"https://www.acma.in/north-events.php","audience":null,"last_edition":null,"notes":"ACMA lists January 2027; exact date not published.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"bmge-2027","name":"Bharat Mobility Global Expo 2027","start":"2027-02-04","end":"2027-02-09","location":"Bharat Mandapam (4-9 Feb) and Yashobhoomi (4-7 Feb), New Delhi","regions":["Delhi NCR"],"sectors":["oem","cv","components","ev","battery","semis","software","logistics"],"organiser":"SIAM, ACMA, CII and other industry associations; supported by the Ministries of Commerce & Industry and Heavy Industries","link":"https://www.bharat-mobility.com/","status":"confirmed","verified_by":"official","source_url":"https://www.pib.gov.in/PressReleasePage.aspx?PRID=2141842","audience":{"value":980000,"basis":"last_edition","note":"9.8 lakh visitors at the 2025 edition (PIB)"},"last_edition":null,"notes":"Third edition; adds multi-modal mobility and logistics. The tracker's separate 'Bharat Mobility Component and Technology Show 2027' row is treated as part of this expo (assumption; confirm).","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"logimat-india-2027","name":"LogiMAT India 2027","start":"2027-02-08","end":"2027-02-10","location":"Bombay Exhibition Centre, Mumbai","regions":["Mumbai"],"sectors":["logistics","mfg"],"organiser":"Messe Stuttgart India","link":"https://www.qimarox.com/event/logimat-india-2027/","status":"tentative","verified_by":"secondary","source_url":"https://www.qimarox.com/event/logimat-india-2027/","audience":null,"last_edition":null,"notes":"Dates from exhibitor Qimarox's event page. Confirm on the LogiMAT India site.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"acma-cyber-conference-2027","name":"Conference on Cyber Security (ACMA)","start":"2027-02","end":"2027-02","location":"NCR","regions":["Delhi NCR"],"sectors":["cyber","components"],"organiser":"Automotive Component Manufacturers Association of India, Northern Region","link":"https://www.acma.in/north-events.php","status":"tentative","verified_by":"official","source_url":"https://www.acma.in/north-events.php","audience":null,"last_edition":null,"notes":"ACMA lists February 2027; exact date not published.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"sae-euro7-2027","name":"Euro7 at IITM (SAEINDIA)","start":"2027-02","end":"2027-02","location":"Chennai","regions":["Chennai"],"sectors":["policy","oem"],"organiser":"SAEINDIA","link":"https://www.saeindia.org/event-calendar-2026-2027/","status":"tentative","verified_by":"official","source_url":"https://www.saeindia.org/event-calendar-2026-2027/","audience":null,"last_edition":null,"notes":"SAEINDIA calendar gives the month only.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"convergence-india-2027","name":"Convergence India 2027 (34th edition)","start":"2027-03-23","end":"2027-03-25","location":"Bharat Mandapam, New Delhi","regions":["Delhi NCR"],"sectors":["software","semis","cyber","urban"],"organiser":"India Trade Promotion Organisation (ITPO) and Exhibitions India Group","link":"https://www.convergenceindia.org/","status":"confirmed","verified_by":"official","source_url":"https://www.convergenceindia.org/","audience":{"value":41250,"basis":"last_edition","note":"Attendees at the 2026 edition (33rd)"},"last_edition":null,"notes":"Co-located shows include AI Bharat Expo, IoT India Expo, Smart Mobility India Expo and Bharat Future Cities Expo. 2026 edition had 1,022 exhibitors and 280 speakers.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"bharat-future-cities-2027","name":"Bharat Future Cities Expo 2027","start":"2027-03-23","end":"2027-03-25","location":"Bharat Mandapam, New Delhi","regions":["Delhi NCR"],"sectors":["urban","software"],"organiser":"Exhibitions India Group and ITPO","link":"https://www.bharatfuturecities.com/","status":"confirmed","verified_by":"official","source_url":"https://www.bharatfuturecities.com/","audience":null,"last_edition":null,"notes":"Replaces the tracker's 'Smart Cities India Expo' row (site redirects to Bharat Future Cities). Runs alongside Convergence India.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"smart-mobility-india-expo-2027","name":"Smart Mobility India Expo 2027","start":"2027-03-23","end":"2027-03-25","location":"Bharat Mandapam, New Delhi","regions":["Delhi NCR"],"sectors":["urban","ev","software"],"organiser":"Exhibitions India Group and ITPO","link":"https://www.convergenceindia.org/","status":"tentative","verified_by":"official","source_url":"https://www.convergenceindia.org/","audience":null,"last_edition":null,"notes":"Listed as a co-located show on the Convergence India 2027 site; dates inherited from the parent event.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"cybersec-india-expo-2027","name":"CyberSec India Expo 2027","start":"2027-05-20","end":"2027-05-21","location":"Bombay Exhibition Centre, Mumbai","regions":["Mumbai"],"sectors":["cyber"],"organiser":"CyberSec India Expo","link":"https://cybersecindiaexpo.com/","status":"confirmed","verified_by":"official","source_url":"https://cybersecindiaexpo.com/","audience":{"value":6948,"basis":"last_edition","note":"Attendees at the 2026 edition"},"last_edition":null,"notes":"May be a different event from the tracker's New Delhi 'Cyber Security India Expo' row; confirm.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"electronica-productronica-india","name":"electronica India & productronica India","start":null,"end":null,"location":"Bengaluru or Delhi NCR","regions":["Bengaluru","Delhi NCR"],"sectors":["semis","mfg"],"organiser":"Messe Muenchen India","link":"https://timestech.in/electronica-india-productronica-india-2026-open-in-bengaluru/","status":"awaiting","verified_by":"official","source_url":"https://timestech.in/electronica-india-productronica-india-2026-open-in-bengaluru/","audience":{"value":50000,"basis":"last_edition","note":"Organiser's target of 50,000+ business visitors for the Sep 2026 edition"},"last_edition":"16-18 Sep 2026, BIEC Bengaluru","notes":"The tracker listed the two co-located shows separately; merged here. Next edition not announced.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"semicon-india","name":"SEMICON India","start":null,"end":null,"location":"New Delhi","regions":["Delhi NCR"],"sectors":["semis"],"organiser":"SEMI / India Semiconductor Mission","link":"https://www.semiconindia.org/","status":"awaiting","verified_by":"official","source_url":"https://www.semiconindia.org/","audience":null,"last_edition":"Sep 2026, New Delhi (inaugurated 17 Sep)","notes":"2027 date not announced.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"india-ai-impact-summit","name":"India AI Impact Summit","start":null,"end":null,"location":"New Delhi","regions":["Delhi NCR"],"sectors":["software"],"organiser":"IndiaAI / Government of India","link":"https://impact.indiaai.gov.in/","status":"awaiting","verified_by":"official","source_url":"https://impact.indiaai.gov.in/","audience":null,"last_edition":"19-20 Feb 2026, New Delhi","notes":"Next edition not announced.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"automation-expo","name":"Automation Expo","start":null,"end":null,"location":"Bombay Exhibition Centre, Mumbai","regions":["Mumbai"],"sectors":["mfg"],"organiser":"IED Communications Ltd.","link":"https://www.automationindiaexpo.com/","status":"awaiting","verified_by":"official","source_url":"https://www.automationindiaexpo.com/","audience":{"value":65000,"basis":"last_edition","note":"Organiser cites 65,000+ industry professionals and 2,000+ exhibitors for the 2026 edition"},"last_edition":"22-25 Jul 2026, Bombay Exhibition Centre","notes":"Next edition not announced.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"automation-expo-south","name":"Automation Expo South","start":null,"end":null,"location":"Chennai","regions":["Chennai"],"sectors":["mfg"],"organiser":"IED Communications Ltd.","link":"https://www.automationindiaexpo.com/","status":"awaiting","verified_by":"secondary","source_url":"https://www.automationindiaexpo.com/","audience":null,"last_edition":"Mar 2026, Chennai","notes":"Trade press describes the 2026 edition in Chennai; no later edition announced.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"india-manufacturing-show","name":"India Manufacturing Show","start":null,"end":null,"location":"Bengaluru","regions":["Bengaluru"],"sectors":["mfg"],"organiser":"Laghu Udyog Bharati / IMS Foundation","link":"https://indiamanufacturingshow.com/","status":"awaiting","verified_by":"tracker","source_url":"https://indiamanufacturingshow.com/","audience":null,"last_edition":null,"notes":"TradeIndia lists a 2027 edition without dates; the organiser site is out of date.","last_verified":null,"first_seen":"2026-09-30","approved":true},{"id":"india-warehousing-show","name":"India Warehousing Show","start":null,"end":null,"location":"New Delhi / Delhi NCR","regions":["Delhi NCR"],"sectors":["logistics"],"organiser":"RX India","link":"https://10times.com/india-warehousing-show","status":"awaiting","verified_by":"secondary","source_url":"https://10times.com/india-warehousing-show","audience":null,"last_edition":"Jun 2026, New Delhi (per 10times)","notes":"Separate from the Mumbai India Warehousing & Logistics Show. A 2027 edition is listed without dates.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"commercial-vehicle-forum","name":"Commercial Vehicle Forum","start":null,"end":null,"location":"Pune","regions":["Pune"],"sectors":["cv","logistics"],"organiser":"MotorIndia / organiser to be confirmed","link":"https://cvforum.in/","status":"awaiting","verified_by":"secondary","source_url":"https://cvforum.in/","audience":{"value":500,"basis":"last_edition","note":"Previous editions drew 500+ delegates, 100+ speakers and 50+ partners"},"last_edition":"10 Jun 2026, Conrad Pune","notes":"Next edition not announced.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"cyber-security-india-expo","name":"Cyber Security India Expo","start":null,"end":null,"location":"New Delhi","regions":["Delhi NCR"],"sectors":["cyber"],"organiser":"Exhibitions India Group","link":null,"status":"awaiting","verified_by":"tracker","source_url":null,"audience":null,"last_edition":null,"notes":"Tracker row with no verified date. Possibly the same as CyberSec India Expo in Mumbai; confirm.","last_verified":null,"first_seen":"2026-09-30","approved":true},{"id":"et-gcc-conclave","name":"ET GCC Annual Conclave","start":null,"end":null,"location":"Bengaluru / Hyderabad","regions":["Bengaluru","Other India"],"sectors":["gcc"],"organiser":"ET GCC / The Economic Times","link":null,"status":"awaiting","verified_by":"tracker","source_url":null,"audience":null,"last_edition":"2025 (4th edition), Bengaluru","notes":"Next edition not announced.","last_verified":null,"first_seen":"2026-09-30","approved":true},{"id":"nasscom-gcc-summit","name":"NASSCOM GCC Summit","start":null,"end":null,"location":"Hyderabad / Mumbai","regions":["Other India"],"sectors":["gcc"],"organiser":"NASSCOM","link":"https://community.nasscom.in/event/nasscom-gcc-summit-2026","status":"awaiting","verified_by":"secondary","source_url":"https://community.nasscom.in/event/nasscom-gcc-summit-2026","audience":null,"last_edition":"May 2026","notes":"Tracker calls it 'NASSCOM GCC Conclave'; the 2026 edition was titled Nasscom GCC Summit. Next edition not announced.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"zinnov-confluence","name":"Zinnov Confluence","start":null,"end":null,"location":"Bengaluru","regions":["Bengaluru"],"sectors":["gcc","software"],"organiser":"Zinnov","link":"https://confluence.zinnov.com/india/agenda","status":"awaiting","verified_by":"secondary","source_url":"https://confluence.zinnov.com/india/agenda","audience":null,"last_edition":"Aug 2026, Bengaluru (per 10times)","notes":"Next edition not announced.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"nullcon-goa","name":"Nullcon Goa","start":null,"end":null,"location":"BITS Pilani K K Birla Goa Campus","regions":["Other India"],"sectors":["cyber"],"organiser":"Nullcon","link":"https://nullcon.net/goa-2026","status":"awaiting","verified_by":"official","source_url":"https://nullcon.net/goa-2026","audience":{"value":3000,"basis":"last_edition","note":"Over 3,000 attendees from 20+ countries in 2026"},"last_edition":"28 Feb-1 Mar 2026, BITS Pilani Goa","notes":"2027 edition announced on the Nullcon site; dates not yet published.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"acma-automechanika-new-delhi","name":"ACMA Automechanika New Delhi","start":null,"end":null,"location":"Dwarka, New Delhi","regions":["Delhi NCR"],"sectors":["components","cv"],"organiser":"Messe Frankfurt Trade Fairs India / ACMA","link":"https://messefrankfurt-india.com/events/visitor/acma-automechanika-new-delhi","status":"awaiting","verified_by":"secondary","source_url":"https://messefrankfurt-india.com/events/visitor/acma-automechanika-new-delhi","audience":null,"last_edition":"5-7 Feb 2026, Dwarka, New Delhi (870+ exhibitors expected)","notes":"Next edition not announced.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"siam-gems","name":"Global Electrification Mobility Summit (GEMS)","start":null,"end":null,"location":"New Delhi","regions":["Delhi NCR"],"sectors":["ev","policy"],"organiser":"Society of Indian Automobile Manufacturers","link":"http://www.siam.in/event-program.aspx?mpgid=30&pgid1=124&pgidtrail=68&eid=332&et=current","status":"awaiting","verified_by":"official","source_url":"http://www.siam.in/event-program.aspx?mpgid=30&pgid1=124&pgidtrail=68&eid=332&et=current","audience":null,"last_edition":"10 Feb 2026 (5th edition), The Lalit, New Delhi","notes":"Merged with the tracker's duplicate 'SIAM Global Electrification Mobility Summit' row. No 6th edition announced.","last_verified":"2026-09-30","first_seen":"2026-09-30","approved":true},{"id":"siam-istem","name":"International Symposium for Thriving Eco-Energy in Mobility (ISTEM)","start":null,"end":null,"location":"New Delhi","regions":["Delhi NCR"],"sectors":["altfuel","policy"],"organiser":"Society of Indian Automobile Manufacturers","link":"https://www.siam.in/event-registration-stepone.aspx?mpgid=30&pgid1=124&pgidtrail=68&eid=335&et=current","status":"awaiting","verified_by":"tracker","source_url":"https://www.siam.in/event-registration-stepone.aspx?mpgid=30&pgid1=124&pgidtrail=68&eid=335&et=current","audience":null,"last_edition":null,"notes":"Trade press reports the 4th ISTEM ran alongside SIAM's Sustainable Mobility Week, so this and the row below may be one event.","last_verified":null,"first_seen":"2026-09-30","approved":true},{"id":"siam-sustainability-week","name":"SIAM Automotive Sustainability Week","start":null,"end":null,"location":"New Delhi","regions":["Delhi NCR"],"sectors":["policy","mfg"],"organiser":"Society of Indian Automobile Manufacturers","link":"https://www.siam.in/pressrelease-details.aspx?mpgid=53&pgidtrail=50&pid=601","status":"awaiting","verified_by":"tracker","source_url":"https://www.siam.in/pressrelease-details.aspx?mpgid=53&pgidtrail=50&pid=601","audience":null,"last_edition":null,"notes":"2027 date not announced.","last_verified":null,"first_seen":"2026-09-30","approved":true}]}</script>
+<script>
+(function () {
+  'use strict';
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var MON_LONG = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var BASIS = { expected: 'expected', last_edition: 'last edition', reported: 'reported' };
+  var STATUS = { confirmed: 'Confirmed', tentative: 'Tentative', awaiting: 'Awaiting date' };
+  var VERIFIED = { official: 'Organiser site or calendar', secondary: 'Trade press, exhibitor or listing page', aggregator: 'Directory listing only', tracker: 'Carried over from the team tracker' };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var safeUrl = function (u) { try { var x = new URL(u); return (x.protocol === 'https:' || x.protocol === 'http:') ? x.href : null; } catch (e) { return null; } };
+  var nf = new Intl.NumberFormat('en-IN');
+
+  var meta = {}, events = [], sectorById = {}, groupById = {};
+  var state = { q: '', sectors: new Set(), month: '', region: '', status: '', sort: 'date' };
+  var open = new Set();
+
+  var now = new Date(); var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  function parse(s, end) {
+    var m = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(s || '');
+    if (!m) return null;
+    var y = +m[1], mo = +m[2] - 1;
+    if (m[3]) return new Date(y, mo, +m[3]);
+    return end ? new Date(y, mo + 1, 0) : new Date(y, mo, 1);
+  }
+  function monthKey(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2); }
+
+  function prepare(ev) {
+    ev._s = parse(ev.start, false);
+    ev._e = parse(ev.end || ev.start, true);
+    ev._exact = !!(ev.start && ev.start.length === 10);
+    ev._months = [];
+    if (ev._s && ev._e) {
+      var d = new Date(ev._s.getFullYear(), ev._s.getMonth(), 1);
+      while (d <= ev._e && ev._months.length < 24) { ev._months.push(monthKey(d)); d = new Date(d.getFullYear(), d.getMonth() + 1, 1); }
+    }
+    ev._aud = ev.audience && ev.audience.value ? ev.audience.value : 0;
+    var secLabels = (ev.sectors || []).map(function (id) { return sectorById[id] ? sectorById[id].label : id; });
+    ev._hay = [ev.name, ev.organiser, ev.location, (ev.regions || []).join(' '), secLabels.join(' '), ev.notes].join(' ').toLowerCase();
+    return ev;
+  }
+
+  function fmtMonth(ev) {
+    if (!ev._s) return 'TBA';
+    var a = ev._s, b = ev._e;
+    if (a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth()) return MON[a.getMonth()] + ' ' + a.getFullYear();
+    if (a.getFullYear() === b.getFullYear()) return MON[a.getMonth()] + '–' + MON[b.getMonth()] + ' ' + a.getFullYear();
+    return MON[a.getMonth()] + ' ' + a.getFullYear() + ' – ' + MON[b.getMonth()] + ' ' + b.getFullYear();
+  }
+  function fmtDate(ev, withYear) {
+    if (!ev._s) return 'TBA';
+    if (!ev._exact) return 'Dates TBC';
+    var a = ev._s, b = ev._e, y = withYear ? ' ' + b.getFullYear() : '';
+    if (+a === +b) return a.getDate() + ' ' + MON[a.getMonth()] + y;
+    if (a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear()) return a.getDate() + '–' + b.getDate() + ' ' + MON[a.getMonth()] + y;
+    return a.getDate() + ' ' + MON[a.getMonth()] + ' – ' + b.getDate() + ' ' + MON[b.getMonth()] + y;
+  }
+  function fmtStamp(iso) {
+    var d = parse(iso, false); if (!d) return iso || '';
+    return d.getDate() + ' ' + MON[d.getMonth()] + ' ' + d.getFullYear();
+  }
+  function monthLabel(key) { var p = key.split('-'); return MON_LONG[+p[1] - 1] + ' ' + p[0]; }
+
+  function isVisible(ev) { return ev.approved !== false && !(ev._e && ev._e < today); }
+
+  function matches(ev, skipSector) {
+    if (state.q) {
+      var terms = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+      for (var i = 0; i < terms.length; i++) if (ev._hay.indexOf(terms[i]) === -1) return false;
+    }
+    if (!skipSector && state.sectors.size) {
+      var hit = (ev.sectors || []).some(function (s) { return state.sectors.has(s); });
+      if (!hit) return false;
+    }
+    if (state.month) {
+      if (state.month === 'tba') { if (ev._s) return false; }
+      else if (ev._months.indexOf(state.month) === -1) return false;
+    }
+    if (state.region && (ev.regions || []).indexOf(state.region) === -1) return false;
+    if (state.status && ev.status !== state.status) return false;
+    return true;
+  }
+
+  function cmpDate(a, b) {
+    if (a._s && b._s) return (a._s - b._s) || (a._e - b._e) || a.name.localeCompare(b.name);
+    if (a._s) return -1; if (b._s) return 1;
+    return a.name.localeCompare(b.name);
+  }
+  function sorted(list) {
+    var l = list.slice();
+    if (state.sort === 'name') l.sort(function (a, b) { return a.name.localeCompare(b.name); });
+    else if (state.sort === 'audience') l.sort(function (a, b) { return (b._aud - a._aud) || cmpDate(a, b); });
+    else l.sort(cmpDate);
+    return l;
+  }
+
+  /* ---------- rendering ---------- */
+  function sectorPills(ev) {
+    return '<div class="pills">' + (ev.sectors || []).map(function (id) {
+      var s = sectorById[id] || { label: id, group: '' };
+      return '<span class="pill"><span class="dot g-' + esc(s.group) + '"></span>' + esc(s.label) + '</span>';
+    }).join('') + '</div>';
+  }
+  function audienceCell(ev) {
+    if (!ev._aud) return '<span class="muted">—</span>';
+    var a = ev.audience;
+    return '<span title="' + esc(a.note || '') + '">' + nf.format(a.value) + '</span><span class="basis">' + esc(BASIS[a.basis] || '') + '</span>';
+  }
+  function detailRows(ev) {
+    var rows = [];
+    var url = safeUrl(ev.source_url);
+    rows.push(['Verification', esc(VERIFIED[ev.verified_by] || ev.verified_by || '—') + (ev.last_verified ? ' · checked ' + esc(fmtStamp(ev.last_verified)) : '')]);
+    if (url) rows.push(['Source', '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(url.replace(/^https?:\/\//, '').slice(0, 80)) + '</a>']);
+    if (ev.last_edition) rows.push(['Last edition', esc(ev.last_edition)]);
+    if (ev.audience && ev.audience.note) rows.push(['Audience note', esc(ev.audience.note)]);
+    if (ev.notes) rows.push(['Notes', esc(ev.notes)]);
+    return '<dl>' + rows.map(function (r) { return '<dt>' + r[0] + '</dt><dd>' + r[1] + '</dd>'; }).join('') + '</dl>';
+  }
+  function eventRow(ev) {
+    var isOpen = open.has(ev.id), link = safeUrl(ev.link);
+    var html = '<tr class="ev" data-id="' + esc(ev.id) + '">' +
+      '<td class="c-name"><div class="name">' + esc(ev.name) + '</div>' +
+        '<div class="badges"><span class="badge ' + esc(ev.status) + '">' + esc(STATUS[ev.status] || ev.status) + '</span>' +
+        '<button class="tog" type="button" aria-expanded="' + isOpen + '" data-id="' + esc(ev.id) + '">' + (isOpen ? 'Hide details' : 'Details') + '</button></div></td>' +
+      '<td class="c-month" data-label="Month">' + esc(fmtMonth(ev)) + '</td>' +
+      '<td class="c-date" data-label="Date">' + esc(fmtDate(ev)) + '</td>' +
+      '<td class="c-loc" data-label="Location">' + esc(ev.location || '—') + '</td>' +
+      '<td class="c-aud" data-label="Expected audience">' + audienceCell(ev) + '</td>' +
+      '<td class="c-sector" data-label="Sector">' + sectorPills(ev) + '</td>' +
+      '<td class="c-org" data-label="Organiser">' + (ev.organiser ? esc(ev.organiser) : '<span class="muted">Not stated</span>') + '</td>' +
+      '<td class="c-link">' + (link ? '<a class="go" href="' + esc(link) + '" target="_blank" rel="noopener noreferrer">Explore<span class="sr"> ' + esc(ev.name) + '</span> ↗</a>' : '<span class="muted">—</span>') + '</td></tr>';
+    if (isOpen) html += '<tr class="detail"><td colspan="8">' + detailRows(ev) + '</td></tr>';
+    return html;
+  }
+  function groupKey(ev) { return ev._s ? monthKey(ev._s) : 'tba'; }
+
+  function render() {
+    var vis = events.filter(isVisible);
+    var list = sorted(vis.filter(function (ev) { return matches(ev, false); }));
+    var body = $('body'), html = '';
+    if (state.sort === 'date') {
+      var counts = {};
+      list.forEach(function (ev) { var k = groupKey(ev); counts[k] = (counts[k] || 0) + 1; });
+      var last = null;
+      list.forEach(function (ev) {
+        var k = groupKey(ev);
+        if (k !== last) {
+          html += '<tr class="grp"><th colspan="8" scope="colgroup">' + (k === 'tba' ? 'Awaiting announcement' : esc(monthLabel(k))) +
+            ' <span>· ' + counts[k] + (counts[k] === 1 ? ' event' : ' events') + '</span></th></tr>';
+          last = k;
+        }
+        html += eventRow(ev);
+      });
+    } else {
+      list.forEach(function (ev) { html += eventRow(ev); });
+    }
+    body.innerHTML = html;
+    $('empty').hidden = list.length > 0;
+    $('tbl').hidden = list.length === 0;
+
+    var dated = list.filter(function (e) { return e._s; }).length;
+    $('count').textContent = list.length + (list.length === 1 ? ' event' : ' events') + ' shown' +
+      (list.length - dated ? ' (' + (list.length - dated) + ' awaiting a date)' : '');
+    renderChips(vis);
+    writeHash();
+  }
+
+  function renderChips(vis) {
+    var counts = {};
+    vis.filter(function (ev) { return matches(ev, true); }).forEach(function (ev) {
+      (ev.sectors || []).forEach(function (s) { counts[s] = (counts[s] || 0) + 1; });
+    });
+    var html = '';
+    (meta.sector_groups || []).forEach(function (g) {
+      var secs = (meta.sectors || []).filter(function (s) { return s.group === g.id; });
+      if (!secs.length) return;
+      html += '<div class="grp-row"><span class="grp-label">' + esc(g.label) + '</span>' + secs.map(function (s) {
+        var on = state.sectors.has(s.id), n = counts[s.id] || 0;
+        return '<button type="button" class="chip" data-sector="' + esc(s.id) + '" aria-pressed="' + on + '" data-zero="' + (n === 0) + '">' +
+          '<span class="dot g-' + esc(s.group) + '"></span>' + esc(s.label) + ' <span class="n">' + n + '</span></button>';
+      }).join('') + '</div>';
+    });
+    $('chips').innerHTML = html;
+  }
+
+  function buildSelects(vis) {
+    var months = {};
+    vis.forEach(function (ev) { ev._months.forEach(function (k) { months[k] = 1; }); });
+    var mo = '<option value="">All months</option>' + Object.keys(months).sort().map(function (k) { return '<option value="' + k + '">' + monthLabel(k) + '</option>'; }).join('') +
+      '<option value="tba">Awaiting announcement</option>';
+    $('month').innerHTML = mo;
+    $('region').innerHTML = '<option value="">All regions</option>' + (meta.regions || []).map(function (r) { return '<option>' + esc(r) + '</option>'; }).join('');
+  }
+
+  /* ---------- URL state ---------- */
+  function readHash() {
+    try {
+      var p = new URLSearchParams(location.hash.slice(1));
+      state.q = p.get('q') || '';
+      state.sectors = new Set((p.get('s') || '').split(',').filter(Boolean));
+      state.month = p.get('m') || ''; state.region = p.get('r') || '';
+      state.status = p.get('st') || ''; state.sort = p.get('o') || 'date';
+    } catch (e) { /* ignore */ }
+  }
+  function writeHash() {
+    try {
+      var p = new URLSearchParams();
+      if (state.q) p.set('q', state.q);
+      if (state.sectors.size) p.set('s', Array.from(state.sectors).join(','));
+      if (state.month) p.set('m', state.month);
+      if (state.region) p.set('r', state.region);
+      if (state.status) p.set('st', state.status);
+      if (state.sort !== 'date') p.set('o', state.sort);
+      var h = p.toString();
+      history.replaceState(null, '', h ? '#' + h : location.pathname + location.search);
+    } catch (e) { /* ignore */ }
+  }
+  function syncControls() {
+    $('q').value = state.q; $('month').value = state.month; $('region').value = state.region;
+    $('status').value = state.status; $('sort').value = state.sort;
+  }
+  function clearAll() {
+    state.q = ''; state.sectors = new Set(); state.month = ''; state.region = ''; state.status = ''; state.sort = 'date';
+    syncControls(); render();
+  }
+
+  /* ---------- CSV ---------- */
+  function csvCell(v) {
+    var s = String(v == null ? '' : v);
+    if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+    return '"' + s.replace(/"/g, '""') + '"';
+  }
+  function downloadCsv() {
+    var list = sorted(events.filter(isVisible).filter(function (ev) { return matches(ev, false); }));
+    var head = ['Name of the event', 'Month', 'Date', 'Location', 'Expected audience', 'Audience basis', 'Sector', 'Organiser', 'Link', 'Status', 'Verification', 'Last verified'];
+    var rows = list.map(function (ev) {
+      return [ev.name, fmtMonth(ev), fmtDate(ev, true), ev.location, ev._aud || '', ev._aud ? (BASIS[ev.audience.basis] || '') : '',
+        (ev.sectors || []).map(function (id) { return sectorById[id] ? sectorById[id].label : id; }).join('; '),
+        ev.organiser || '', safeUrl(ev.link) || '', STATUS[ev.status] || ev.status, VERIFIED[ev.verified_by] || '', ev.last_verified || ''];
+    });
+    var csv = '﻿' + [head].concat(rows).map(function (r) { return r.map(csvCell).join(','); }).join('\r\n');
+    var url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    var a = document.createElement('a'); a.href = url; a.download = 'india-mobility-events.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  /* ---------- boot ---------- */
+  function start(data, banner) {
+    meta = data.meta || {};
+    (meta.sectors || []).forEach(function (s) { sectorById[s.id] = s; });
+    (meta.sector_groups || []).forEach(function (g) { groupById[g.id] = g; });
+    events = (data.events || []).map(prepare);
+    if (meta.title) { $('title').textContent = meta.title; document.title = meta.title; }
+    var vis = events.filter(isVisible);
+    var conf = vis.filter(function (e) { return e.status === 'confirmed'; }).length;
+    $('sub').textContent = vis.length + ' upcoming events · ' + conf + ' with confirmed dates · last checked ' + fmtStamp(meta.generated);
+    if (banner) { $('banner').textContent = banner; $('banner').hidden = false; }
+    buildSelects(vis);
+    readHash(); syncControls(); render();
+  }
+
+  function boot() {
+    var seed = {};
+    try { seed = JSON.parse($('seed').textContent || '{}'); } catch (e) { seed = {}; }
+    var timer = null;
+    fetch('events.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data) { start(data, ''); })
+      .catch(function () {
+        if (seed.events && seed.events.length) {
+          start(seed, "Couldn't load the latest events.json, so this is the built-in snapshot from " + fmtStamp((seed.meta || {}).generated) + '. If you opened the file directly from disk, serve it with a local web server or open the GitHub Pages link.');
+        } else {
+          $('sub').textContent = 'Could not load events.';
+        }
+      });
+  }
+
+  $('q').addEventListener('input', function (e) { state.q = e.target.value.trim(); render(); });
+  $('month').addEventListener('change', function (e) { state.month = e.target.value; render(); });
+  $('region').addEventListener('change', function (e) { state.region = e.target.value; render(); });
+  $('status').addEventListener('change', function (e) { state.status = e.target.value; render(); });
+  $('sort').addEventListener('change', function (e) { state.sort = e.target.value; render(); });
+  $('clear').addEventListener('click', clearAll);
+  $('clear2').addEventListener('click', clearAll);
+  $('csv').addEventListener('click', downloadCsv);
+  $('chips').addEventListener('click', function (e) {
+    var b = e.target.closest('.chip'); if (!b) return;
+    var id = b.getAttribute('data-sector');
+    if (state.sectors.has(id)) state.sectors.delete(id); else state.sectors.add(id);
+    render();
+    var again = $('chips').querySelector('[data-sector="' + id + '"]'); if (again) again.focus();
+  });
+  $('body').addEventListener('click', function (e) {
+    var t = e.target.closest('.tog'); if (!t) return;
+    var id = t.getAttribute('data-id');
+    if (open.has(id)) open.delete(id); else open.add(id);
+    render();
+    var again = $('body').querySelector('.tog[data-id="' + id + '"]'); if (again) again.focus();
+  });
+  window.addEventListener('hashchange', function () { readHash(); syncControls(); render(); });
+
+  boot();
+})();
+</script>
+</body>
+</html>
