@@ -744,8 +744,8 @@
     {
       "id": "sae-euro7-2027",
       "name": "Euro7 at IITM (SAEINDIA)",
-      "start": "2027-02",
-      "end": "2027-02",
+      "start": "2027-02-06",
+      "end": "2027-02-06",
       "location": "Chennai",
       "regions": [
         "Chennai"
@@ -761,7 +761,7 @@
       "source_url": "https://www.saeindia.org/event-calendar-2026-2027/",
       "audience": null,
       "last_edition": null,
-      "notes": "SAEINDIA calendar gives the month only.",
+      "notes": "SAEINDIA calendar gives the month only. Exact date auto-detected (6 Feb 2027); please confirm.",
       "last_verified": "2026-09-30",
       "first_seen": "2026-09-30",
       "approved": true
@@ -879,8 +879,8 @@
     {
       "id": "electronica-productronica-india",
       "name": "electronica India & productronica India",
-      "start": null,
-      "end": null,
+      "start": "2026-09-30",
+      "end": "2026-09-30",
       "location": "Bengaluru or Delhi NCR",
       "regions": [
         "Bengaluru",
@@ -892,7 +892,7 @@
       ],
       "organiser": "Messe Muenchen India",
       "link": "https://timestech.in/electronica-india-productronica-india-2026-open-in-bengaluru/",
-      "status": "awaiting",
+      "status": "tentative",
       "verified_by": "official",
       "source_url": "https://timestech.in/electronica-india-productronica-india-2026-open-in-bengaluru/",
       "audience": {
@@ -901,7 +901,7 @@
         "note": "Organiser's target of 50,000+ business visitors for the Sep 2026 edition"
       },
       "last_edition": "16-18 Sep 2026, BIEC Bengaluru",
-      "notes": "The tracker listed the two co-located shows separately; merged here. Next edition not announced.",
+      "notes": "The tracker listed the two co-located shows separately; merged here. Auto-detected 30 Sep 2026 on the page; please confirm.",
       "last_verified": "2026-09-30",
       "first_seen": "2026-09-30",
       "approved": true
@@ -957,8 +957,8 @@
     {
       "id": "automation-expo",
       "name": "Automation Expo",
-      "start": null,
-      "end": null,
+      "start": "2027-06-02",
+      "end": "2027-06-05",
       "location": "Bombay Exhibition Centre, Mumbai",
       "regions": [
         "Mumbai"
@@ -968,7 +968,7 @@
       ],
       "organiser": "IED Communications Ltd.",
       "link": "https://www.automationindiaexpo.com/",
-      "status": "awaiting",
+      "status": "tentative",
       "verified_by": "official",
       "source_url": "https://www.automationindiaexpo.com/",
       "audience": {
@@ -977,7 +977,7 @@
         "note": "Organiser cites 65,000+ industry professionals and 2,000+ exhibitors for the 2026 edition"
       },
       "last_edition": "22-25 Jul 2026, Bombay Exhibition Centre",
-      "notes": "Next edition not announced.",
+      "notes": "Auto-detected 2-5 Jun 2027 on the page; please confirm.",
       "last_verified": "2026-09-30",
       "first_seen": "2026-09-30",
       "approved": true
@@ -1306,6 +1306,349 @@
       "last_edition": null,
       "notes": "2027 date not announced.",
       "last_verified": null,
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "biofuel-expo-2027-will-be-held-from-3rd-5th-june-2027-at-ind",
+      "name": "Biofuel Expo 2027 will be held from 3rd - 5th June 2027 at India Expo Centre and Mart in Greater Noida, India. It is one of India's leading international trade exhibitions focused on biofuels, renewable energy, biomass, ethanol, biodiesel, bioga..... more",
+      "start": "2027-06-03",
+      "end": "2027-06-03",
+      "location": "Greater Noida",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "altfuel"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/153281/biofuel-expo.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/153281/biofuel-expo.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "industrial-engineering-xpo-indore-2027-is-set-to-be-a-premie",
+      "name": "Industrial Engineering Xpo - Indore 2027 is set to be a premier platform for the engineering and manufacturing industry, bringing together key stakeholders from across the country, take place from 05th to 08th February 2027 at the..... more",
+      "start": "2027-02-05",
+      "end": "2027-02-05",
+      "location": "Indore",
+      "regions": [
+        "Other India"
+      ],
+      "sectors": [
+        "mfg"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/151849/industrial-engineering-xpo-indore.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/151849/industrial-engineering-xpo-indore.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "machma-expo-2026-will-be-held-on-11th-to-14th-december-2026-",
+      "name": "MACHMA EXPO 2026 will be held on 11th to 14th December 2026 at Parade Ground, Sector - 17 Chandigarh. A premier showcase of machinery, manufacturing, and technology, this expo brings the latest innovations and trends under one roof. Att..... more",
+      "start": "2026-12-11",
+      "end": "2026-12-11",
+      "location": "Chandigarh",
+      "regions": [
+        "Other India"
+      ],
+      "sectors": [
+        "mfg"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/150546/machma-expo.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/150546/machma-expo.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "autostyle-world-expo-2026-is-poised-to-redefine-the-automoti",
+      "name": "Autostyle World Expo 2026 is poised to redefine the automotive aftermarket landscape by bringing together latest technologies, visionary brands, and passionate consumers on a single, powerful platform. Catering to both B2B and B2C audiences, the sh..... more",
+      "start": "2026-10-09",
+      "end": "2026-10-09",
+      "location": "New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "components",
+        "oem"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/145955/autostyle-world-expo.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/145955/autostyle-world-expo.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "innobus-expo-conference-is-india-s-focused-bus-e-bus-and-com",
+      "name": "InnoBus Expo & Conference is India's focused bus, e-bus and commercial vehicle implementation platform, created to support the country's transition toward clean, safe, connected and future-ready public transport. Built around practical impl..... more",
+      "start": "2026-10-15",
+      "end": "2026-10-15",
+      "location": "New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "oem",
+        "cv",
+        "software"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/154152/innobus-expo-conference.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/154152/innobus-expo-conference.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "consumer-electronics-world-expo-2027-will-be-held-from-21st-",
+      "name": "Consumer Electronics World Expo 2027 will be held from 21st - 23rd January 2027 at Bharat Mandapam in New Delhi, India. This is set to be India's largest business platform for consumer electronics, gadgets, and appliances. It aims..... more",
+      "start": "2027-01-21",
+      "end": "2027-01-21",
+      "location": "New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "semis"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/150724/consumer-electronics-world-expo.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/150724/consumer-electronics-world-expo.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "metro-urban-mass-transit-expo-2027-is-a-premier-industry-pla",
+      "name": "Metro & Urban Mass Transit Expo 2027 is a premier industry platform dedicated to advancing sustainable, efficient, and smart urban transportation systems. Taking place from 4 - 7 February 2027 at Yashobhoomi, Dwarka, New Delhi, the expo will brin..... more",
+      "start": "2027-02-04",
+      "end": "2027-02-04",
+      "location": "New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "urban"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/152479/metro-urban-mass-transit-expo.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/152479/metro-urban-mass-transit-expo.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "rideasia-ev-2027-expo-is-the-eco-friendly-electric-vehicles-",
+      "name": "RideAsia EV 2027 Expo is the eco-friendly Electric Vehicles Expo will be held on 23-24-25 April 2027 at Pragati Maidan, New Delhi, India. offering comprehensive market information, great business opportunities and a platform for networking. RideA..... more",
+      "start": "2027-04-23",
+      "end": "2027-04-23",
+      "location": "New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "ev",
+        "oem"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/151851/rideasia-ev.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/151851/rideasia-ev.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "imtos-india-machine-tools-show-2027-will-be-held-from-14th-1",
+      "name": "IMTOS-India Machine Tools Show 2027 will be held from 14th - 17th May 2025 at Yashobhoomi Convention Centre in New Delhi, India. This is a biennial trade fair focusing on machine ..... more",
+      "start": "2027-05-14",
+      "end": "2027-05-14",
+      "location": "New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "mfg"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/148436/imtos-india-machine-tools-show.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/148436/imtos-india-machine-tools-show.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "delhi-machine-tool-expo-dmtx-2027-the-6th-edition-will-be-he",
+      "name": "Delhi Machine Tool Expo (DMTX) 2027, the 6th edition, will be held from 5 to 8 August 2027 at Yashobhoomi (IICC), Dwarka, New Delhi. DMTX has established itself as North India's premier exhibition for metalworking, manufacturing technology..... more",
+      "start": "2027-08-05",
+      "end": "2027-08-05",
+      "location": "New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "mfg"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/133710/delhi-machine-tool-expo-dmtx.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/133710/delhi-machine-tool-expo-dmtx.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "india-premium-international-trade-fair-for-the-auto-componen",
+      "name": "India Premium International Trade Fair for the Auto Component and Automotive Aftermarket Industry From 3 - 5 February 2028, Yashobhoomi (India International Convention & Expo Centre), Dwarka, New Delhi becom..... more",
+      "start": "2028-02-03",
+      "end": "2028-02-03",
+      "location": "New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "components",
+        "oem"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/148505/acma-automechanika-new-delhi.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/148505/acma-automechanika-new-delhi.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "10-11-december-2026-auto-ev-tech-vision-summit-is-india-s-pr",
+      "name": "10-11 December 2026 - Auto EV Tech Vision Summit is India's premiere EV and automotive technology conference. Network with our rapidly growing community for working design and product engineers and growth gurus by joining us at the Summit. Over two j..... more",
+      "start": "2026-12-10",
+      "end": "2026-12-10",
+      "location": "Bengaluru",
+      "regions": [
+        "Bengaluru"
+      ],
+      "sectors": [
+        "ev",
+        "oem"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/116909/auto-ev-techvision-summit.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/116909/auto-ev-techvision-summit.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "battery-and-recycling-foundation-international-specialists-i",
+      "name": "Battery and Recycling Foundation International, specialists in Battery Technology and Recycling of used batteries at New Delhi, India is pleased to announce the BATTERY BHARAT - 2027 in the historic city of Bangalore 7th - 8th July 2027, Fairfield ..... more",
+      "start": "2027-07-07",
+      "end": "2027-07-07",
+      "location": "New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "battery"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/113123/battery-india.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/113123/battery-india.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
+      "first_seen": "2026-09-30",
+      "approved": true
+    },
+    {
+      "id": "green-vehicle-expo-2027-was-conceptualized-keeping-in-tune-t",
+      "name": "Green Vehicle Expo 2027 was conceptualized keeping in tune the Government of Indiaâs commitment towards encouraging cleaner and sustainable mobility. Green Vehicle Expo would be an apt platform for the stakeholders in the manufacturing, distribut..... more",
+      "start": "2027-08-06",
+      "end": "2027-08-06",
+      "location": "Bangalore",
+      "regions": [
+        "Bengaluru"
+      ],
+      "sectors": [
+        "oem",
+        "mfg"
+      ],
+      "organiser": null,
+      "link": "https://www.tradeindia.com/tradeshows/144731/green-vehicle-expo.html",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/144731/green-vehicle-expo.html",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Auto-added from a directory listing; organiser, venue and audience not stated. Sectors guessed from the title. Check the link before merging.",
+      "last_verified": "2026-09-30",
       "first_seen": "2026-09-30",
       "approved": true
     }
