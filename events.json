@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "India Mobility Events",
-    "generated": "2026-09-30",
+    "generated": "2026-10-01",
     "schema_version": 1,
     "sector_groups": [
       {
@@ -130,7 +130,7 @@
       },
       "last_edition": null,
       "notes": "Runs with the India International Battery Show and Solar Show; the Bharat E-Mobility & Critical Minerals Summit 2026 runs concurrently. Organiser site cites 20,000+ attendees; MTDCNC reports about 15,000 trade visitors.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -155,15 +155,15 @@
       "audience": null,
       "last_edition": null,
       "notes": "Co-located with the India International EV Show; dates from trade press (MTDCNC, ANI).",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
     {
       "id": "bharat-biofuel-expo-2026",
       "name": "Bharat Biofuel & Energy Expo 2026",
-      "start": "2026-10-02",
-      "end": "2026-10-05",
+      "start": "2027-01-29",
+      "end": "2027-01-29",
       "location": "Indore",
       "regions": [
         "Other India"
@@ -175,11 +175,11 @@
       "link": "https://www.tradeindia.com/tradeshows/automobile/",
       "status": "tentative",
       "verified_by": "aggregator",
-      "source_url": "https://www.tradeindia.com/tradeshows/automobile/",
+      "source_url": "https://www.tradeindia.com/tradeshows/155847/bharat-biofuel-energy-expo.html",
       "audience": null,
       "last_edition": null,
-      "notes": "Listed on TradeIndia only; organiser and venue not stated. Verify before relying on it.",
-      "last_verified": "2026-09-30",
+      "notes": "Listed on TradeIndia only; organiser and venue not stated. Verify before relying on it. Date changed from 2-5 Oct 2026 to 29 Jan 2027 (auto-detected 01 Oct 2026); please confirm.",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -205,7 +205,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Dates from KPMG's event page (theme: Scale Without Boundaries). Organiser taken from the earlier tracker. Confirm on the official IMC site.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -234,7 +234,7 @@
       },
       "last_edition": null,
       "notes": "Organiser expects 5,000+ AI professionals, 150+ sessions and 100+ exhibitors.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -259,7 +259,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Name as listed on SAEINDIA's 2026-27 event calendar; the calendar gives no venue or link.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -291,7 +291,7 @@
     {
       "id": "battery-show-india-2026",
       "name": "The Battery Show India 2026 (4th edition)",
-      "start": "2026-10-22",
+      "start": "2026-10-23",
       "end": "2026-10-24",
       "location": "India Expo Mart & Centre, Greater Noida",
       "regions": [
@@ -303,7 +303,7 @@
       ],
       "organiser": "Informa Markets",
       "link": "https://www.thebatteryshowindia.com/",
-      "status": "confirmed",
+      "status": "tentative",
       "verified_by": "official",
       "source_url": "https://www.thebatteryshowindia.com/",
       "audience": {
@@ -312,8 +312,8 @@
         "note": null
       },
       "last_edition": null,
-      "notes": "Organiser page shows 378+ brands, 18,126+ trade visitors, 702 delegates and 126 speakers without saying which edition those figures cover.",
-      "last_verified": "2026-09-30",
+      "notes": "Organiser page shows 378+ brands, 18,126+ trade visitors, 702 delegates and 126 speakers without saying which edition those figures cover. Date changed from 22-24 Oct 2026 to 23-24 Oct 2026 (auto-detected 01 Oct 2026); please confirm.",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -474,7 +474,7 @@
       },
       "last_edition": null,
       "notes": "Organiser expects 50,000+ visitors and 1,600+ exhibitors from 60+ countries.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -523,14 +523,14 @@
       "audience": null,
       "last_edition": null,
       "notes": "Name as listed on SAEINDIA's event calendar.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
     {
       "id": "auto-ev-bharat-2026",
       "name": "Auto EV Bharat 2026",
-      "start": "2026-12-09",
+      "start": "2026-12-10",
       "end": "2026-12-11",
       "location": "KTPO Convention Centre, Whitefield, Bengaluru",
       "regions": [
@@ -543,7 +543,7 @@
       ],
       "organiser": "TradeIndia Trade Shows",
       "link": "https://tradeshows.tradeindia.com/autoevbharat/",
-      "status": "confirmed",
+      "status": "tentative",
       "verified_by": "official",
       "source_url": "https://tradeshows.tradeindia.com/autoevbharat/",
       "audience": {
@@ -552,8 +552,8 @@
         "note": null
       },
       "last_edition": null,
-      "notes": "Organiser cites 250+ exhibitors and 25,000+ visitors. Assumed to be the tracker's 'Auto EV India' (Bengaluru) row, which had no organiser or date.",
-      "last_verified": "2026-09-30",
+      "notes": "Organiser cites 250+ exhibitors and 25,000+ visitors. Assumed to be the tracker's 'Auto EV India' (Bengaluru) row, which had no organiser or date. Date changed from 9-11 Dec 2026 to 10-11 Dec 2026 (auto-detected 01 Oct 2026); please confirm.",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -602,7 +602,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Dates from TradeIndia. evexpo.in showed an unrelated 20 Dec entry with no year and no 2026 dates; confirm with the organiser.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -712,7 +712,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Dates from exhibitor Qimarox's event page. Confirm on the LogiMAT India site.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -744,8 +744,8 @@
     {
       "id": "sae-euro7-2027",
       "name": "Euro7 at IITM (SAEINDIA)",
-      "start": "2027-02",
-      "end": "2027-02",
+      "start": "2027-02-06",
+      "end": "2027-02-06",
       "location": "Chennai",
       "regions": [
         "Chennai"
@@ -761,8 +761,8 @@
       "source_url": "https://www.saeindia.org/event-calendar-2026-2027/",
       "audience": null,
       "last_edition": null,
-      "notes": "SAEINDIA calendar gives the month only.",
-      "last_verified": "2026-09-30",
+      "notes": "SAEINDIA calendar gives the month only. Exact date auto-detected (6 Feb 2027); please confirm.",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -793,7 +793,7 @@
       },
       "last_edition": null,
       "notes": "Co-located shows include AI Bharat Expo, IoT India Expo, Smart Mobility India Expo and Bharat Future Cities Expo. 2026 edition had 1,022 exhibitors and 280 speakers.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -818,7 +818,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Replaces the tracker's 'Smart Cities India Expo' row (site redirects to Bharat Future Cities). Runs alongside Convergence India.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -872,15 +872,15 @@
       },
       "last_edition": null,
       "notes": "May be a different event from the tracker's New Delhi 'Cyber Security India Expo' row; confirm.",
-      "last_verified": "2026-09-30",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
     {
       "id": "electronica-productronica-india",
       "name": "electronica India & productronica India",
-      "start": null,
-      "end": null,
+      "start": "2026-10-01",
+      "end": "2026-10-01",
       "location": "Bengaluru or Delhi NCR",
       "regions": [
         "Bengaluru",
@@ -892,7 +892,7 @@
       ],
       "organiser": "Messe Muenchen India",
       "link": "https://timestech.in/electronica-india-productronica-india-2026-open-in-bengaluru/",
-      "status": "awaiting",
+      "status": "tentative",
       "verified_by": "official",
       "source_url": "https://timestech.in/electronica-india-productronica-india-2026-open-in-bengaluru/",
       "audience": {
@@ -901,8 +901,8 @@
         "note": "Organiser's target of 50,000+ business visitors for the Sep 2026 edition"
       },
       "last_edition": "16-18 Sep 2026, BIEC Bengaluru",
-      "notes": "The tracker listed the two co-located shows separately; merged here. Next edition not announced.",
-      "last_verified": "2026-09-30",
+      "notes": "The tracker listed the two co-located shows separately; merged here. Auto-detected 1 Oct 2026 on the page; please confirm.",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -1009,8 +1009,8 @@
     {
       "id": "india-manufacturing-show",
       "name": "India Manufacturing Show",
-      "start": null,
-      "end": null,
+      "start": "2027-11-11",
+      "end": "2027-11-11",
       "location": "Bengaluru",
       "regions": [
         "Bengaluru"
@@ -1020,21 +1020,21 @@
       ],
       "organiser": "Laghu Udyog Bharati / IMS Foundation",
       "link": "https://indiamanufacturingshow.com/",
-      "status": "awaiting",
-      "verified_by": "tracker",
-      "source_url": "https://indiamanufacturingshow.com/",
+      "status": "tentative",
+      "verified_by": "aggregator",
+      "source_url": "https://www.tradeindia.com/tradeshows/121693/ims-india-manufacturing-show.html",
       "audience": null,
       "last_edition": null,
-      "notes": "TradeIndia lists a 2027 edition without dates; the organiser site is out of date.",
-      "last_verified": null,
+      "notes": "TradeIndia lists a 2027 edition without dates; the organiser site is out of date. Date set to 11 Nov 2027 (auto-detected 01 Oct 2026); please confirm.",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
     {
       "id": "india-warehousing-show",
       "name": "India Warehousing Show",
-      "start": null,
-      "end": null,
+      "start": "2027-06-24",
+      "end": "2027-06-24",
       "location": "New Delhi / Delhi NCR",
       "regions": [
         "Delhi NCR"
@@ -1044,13 +1044,13 @@
       ],
       "organiser": "RX India",
       "link": "https://10times.com/india-warehousing-show",
-      "status": "awaiting",
+      "status": "tentative",
       "verified_by": "secondary",
-      "source_url": "https://10times.com/india-warehousing-show",
+      "source_url": "https://www.tradeindia.com/tradeshows/125363/india-warehousing-show.html",
       "audience": null,
       "last_edition": "Jun 2026, New Delhi (per 10times)",
-      "notes": "Separate from the Mumbai India Warehousing & Logistics Show. A 2027 edition is listed without dates.",
-      "last_verified": "2026-09-30",
+      "notes": "Separate from the Mumbai India Warehousing & Logistics Show. A 2027 edition is listed without dates. Date set to 24 Jun 2027 (auto-detected 01 Oct 2026); please confirm.",
+      "last_verified": "2026-10-01",
       "first_seen": "2026-09-30",
       "approved": true
     },
