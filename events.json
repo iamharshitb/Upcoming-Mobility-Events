@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "India Mobility Events",
-    "generated": "2026-10-01T11:44:46Z",
+    "generated": "2026-10-01T12:02:37Z",
     "schema_version": 1,
     "sector_groups": [
       {
@@ -1404,6 +1404,487 @@
       "audience": null,
       "last_edition": null,
       "notes": "Added by user. EV.OS focus.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "automation-expo-north-2026",
+      "name": "Automation Expo North 2026",
+      "start": "2026-12-09",
+      "end": "2026-12-11",
+      "location": "Bharat Mandapam, Pragati Maidan, New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "mfg",
+        "software"
+      ],
+      "organiser": "IED Communications Ltd.",
+      "link": "https://north.automationindiaexpo.com/",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://north.automationindiaexpo.com/",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Industrial automation, robotics, IIoT, smart manufacturing, Industry 4.0.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "auto-ev-techvision-2026",
+      "name": "Auto EV TechVision Summit 2026",
+      "start": "2026-12-10",
+      "end": "2026-12-11",
+      "location": "KTPO Convention Centre, Whitefield, Bengaluru",
+      "regions": [
+        "Bengaluru"
+      ],
+      "sectors": [
+        "ev",
+        "battery",
+        "software",
+        "semis"
+      ],
+      "organiser": "New Delhi Print Media Pvt. Ltd.",
+      "link": "https://www.techvisionsummit.com/",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://www.techvisionsummit.com/",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Co-located with Auto EV Bharat 2026 at KTPO. EV, battery, embedded software, vehicle engineering.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "c0c0n-2026",
+      "name": "c0c0n 2026 (19th Edition)",
+      "start": "2026-10-09",
+      "end": "2026-10-10",
+      "location": "Grand Hyatt Bolgatty, Kochi, Kerala",
+      "regions": [
+        "Other India"
+      ],
+      "sectors": [
+        "cyber"
+      ],
+      "organiser": "Information Security Research Association (ISRA)",
+      "link": "https://c0c0n.org",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://c0c0n.org",
+      "audience": null,
+      "last_edition": null,
+      "notes": "India's longest-running hacking/cybersecurity conference. Trainings 6–8 & 11–13 Oct; main conference 9–10 Oct. Focus: AI governance, OT/IoT, FinTech/BFSI security.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "avar-2026",
+      "name": "AVAR 2026 — 29th Annual Cybersecurity Conference",
+      "start": "2026-12-02",
+      "end": "2026-12-04",
+      "location": "Hyderabad",
+      "regions": [
+        "Other India"
+      ],
+      "sectors": [
+        "cyber"
+      ],
+      "organiser": "AVAR (Association of Anti-Virus Asia Researchers)",
+      "link": "https://events.aavar.org/cybersecurity-conference/",
+      "status": "confirmed",
+      "verified_by": "secondary",
+      "source_url": "https://events.aavar.org/cybersecurity-conference/",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Threat intelligence, malware research, AI security, cloud security, digital forensics.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "nullcon-goa-2027",
+      "name": "Nullcon Goa 2027",
+      "start": "2027-02-27",
+      "end": "2027-02-28",
+      "location": "Goa",
+      "regions": [
+        "Other India"
+      ],
+      "sectors": [
+        "cyber"
+      ],
+      "organiser": "Nullcon",
+      "link": "https://nullcon.net/event/nullcon-goa-2027/",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://nullcon.net/event/nullcon-goa-2027/",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Security research, AI security, 5G, Android hacking, protocol reverse engineering. Trainings 24–26 Feb; conference 27–28 Feb.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "gartner-security-2027",
+      "name": "Gartner Cybersecurity & Risk Management Summit India 2027",
+      "start": "2027-03-08",
+      "end": "2027-03-09",
+      "location": "Grand Hyatt, Mumbai",
+      "regions": [
+        "Mumbai"
+      ],
+      "sectors": [
+        "cyber",
+        "software"
+      ],
+      "organiser": "Gartner",
+      "link": "https://www.gartner.com/en/conferences/apac/security-risk-management-india",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://www.gartner.com/en/conferences/apac/security-risk-management-india",
+      "audience": null,
+      "last_edition": null,
+      "notes": "AI security, identity, cyber resilience, data security, cloud protection. CISO audience.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "iwls-mumbai-oct-2026",
+      "name": "India Warehousing & Logistics Show (IWLS) 2026",
+      "start": "2026-10-22",
+      "end": "2026-10-24",
+      "location": "Bombay Exhibition Centre (NESCO), Goregaon, Mumbai",
+      "regions": [
+        "Mumbai"
+      ],
+      "sectors": [
+        "logistics"
+      ],
+      "organiser": "RX (Reed Exhibitions)",
+      "link": "https://www.indiawlshow.com",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://www.indiawlshow.com",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Co-located with India Cold Chain Show 2026. Confirmed RX event at NESCO Mumbai.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "transport-logistic-india-2027",
+      "name": "Transport Logistic India 2027 (2nd Edition)",
+      "start": "2027-02-25",
+      "end": "2027-02-26",
+      "location": "Jio World Convention Centre, Mumbai",
+      "regions": [
+        "Mumbai"
+      ],
+      "sectors": [
+        "logistics"
+      ],
+      "organiser": "Messe München India Pvt. Ltd.",
+      "link": "https://transportlogistic-india.com",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://transportlogistic-india.com",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Full supply chain — air, sea, rail, road, warehousing, freight, e-commerce logistics, cold chain.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "india-warehousing-show-2027",
+      "name": "India Warehousing Show 2027 (16th Edition)",
+      "start": "2027-06-24",
+      "end": "2027-06-26",
+      "location": "Yashobhoomi (IICC), Dwarka, New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "logistics"
+      ],
+      "organiser": "RX (Reed Exhibitions)",
+      "link": "https://www.indiawarehousingshow.com",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://www.indiawarehousingshow.com",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Co-located with India Material Handling & Logistics Show 2027.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "imtex-2027",
+      "name": "IMTEX 2027 + Tooltech + Digital Manufacturing",
+      "start": "2027-01-21",
+      "end": "2027-01-27",
+      "location": "BIEC, Tumkur Road, Bengaluru",
+      "regions": [
+        "Bengaluru"
+      ],
+      "sectors": [
+        "mfg",
+        "semis"
+      ],
+      "organiser": "IMTMA (Indian Machine Tool Manufacturers' Association)",
+      "link": "https://www.imtex.in/",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://www.imtex.in/",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Machine tools, CNC, additive manufacturing, digital manufacturing, Industry 4.0. Serving aerospace, automotive, defence, pharma.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "elecrama-2027",
+      "name": "ELECRAMA 2027",
+      "start": "2027-02-20",
+      "end": "2027-02-24",
+      "location": "India Expo Mart, Greater Noida",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "ev",
+        "semis",
+        "altfuel"
+      ],
+      "organiser": "IEEMA (Indian Electrical and Electronics Manufacturers' Association)",
+      "link": "https://elecrama.com/",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://elecrama.com/",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Power generation, T&D, renewable energy, EV ecosystem, industrial automation, smart grids.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "ai-india-expo-2027",
+      "name": "AI India Expo 2027",
+      "start": "2027-01-11",
+      "end": "2027-01-13",
+      "location": "KTPO, Bengaluru",
+      "regions": [
+        "Bengaluru"
+      ],
+      "sectors": [
+        "software",
+        "mfg",
+        "semis"
+      ],
+      "organiser": "IES India",
+      "link": "https://www.aiindiaexpo.com/",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://www.aiindiaexpo.com/",
+      "audience": null,
+      "last_edition": null,
+      "notes": "AI/GenAI, robotics, automation, drones, IoT, cloud, cybersecurity.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "india-electronics-expo-2027",
+      "name": "India Electronics Expo + INDIASOFT 2027 (12th Edition)",
+      "start": "2027-03-23",
+      "end": "2027-03-25",
+      "location": "Bharat Mandapam, Pragati Maidan, New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "semis",
+        "software"
+      ],
+      "organiser": "Electronics and Computer Software Export Promotion Council (ESC)",
+      "link": "https://www.indiaelectronicsexpo.com",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://www.indiaelectronicsexpo.com",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Electronics hardware, IoT, medical electronics, automotive electronics, semiconductors, software exports. Co-located with Bharat Future Cities Expo and Smart Mobility India Expo.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "gcc-summit-hyderabad-2027",
+      "name": "Global Capability Centers Summit 2027 — Hyderabad",
+      "start": "2027-01-28",
+      "end": "2027-01-28",
+      "location": "Hyderabad",
+      "regions": [
+        "Other India"
+      ],
+      "sectors": [
+        "gcc",
+        "software"
+      ],
+      "organiser": "Maxpo",
+      "link": "https://hyderabadgccsummit.com",
+      "status": "confirmed",
+      "verified_by": "secondary",
+      "source_url": "https://hyderabadgccsummit.com",
+      "audience": null,
+      "last_edition": null,
+      "notes": "GCC leadership, AI transformation, technology strategy. One-day summit.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "sson-gcc-week-2027",
+      "name": "Shared Services & GCC Week India 2027",
+      "start": "2027-04-20",
+      "end": "2027-04-23",
+      "location": "Bengaluru",
+      "regions": [
+        "Bengaluru"
+      ],
+      "sectors": [
+        "gcc",
+        "software"
+      ],
+      "organiser": "Shared Services & Outsourcing Network (SSON)",
+      "link": "https://www.ssonetwork.com/events-ssoindia",
+      "status": "confirmed",
+      "verified_by": "secondary",
+      "source_url": "https://www.ssonetwork.com/events-ssoindia",
+      "audience": null,
+      "last_edition": null,
+      "notes": "GCC / Shared Services / Operations. Multi-day conference and expo.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "sae-virtual-prototyping-2026",
+      "name": "Virtual Prototyping & Vehicle Dynamics Simulation (SAEINDIA)",
+      "start": "2026-12-02",
+      "end": "2026-12-03",
+      "location": "Chennai",
+      "regions": [
+        "Chennai"
+      ],
+      "sectors": [
+        "oem",
+        "software"
+      ],
+      "organiser": "SAE India",
+      "link": "https://www.saeindia.org/event-calendar-2026-2027/",
+      "status": "tentative",
+      "verified_by": "secondary",
+      "source_url": "https://www.saeindia.org/event-calendar-2026-2027/",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Professional development programme. Vehicle dynamics simulation, virtual prototyping. Month confirmed, exact dates tentative.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "apac23-sae-2026",
+      "name": "Asia Pacific Automotive Engineering Conference (APAC 23) — SAE India",
+      "start": "2026-11-12",
+      "end": "2026-11-14",
+      "location": "Yashobhoomi, Dwarka, New Delhi",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "oem",
+        "ev",
+        "software",
+        "cyber"
+      ],
+      "organiser": "SAE India",
+      "link": "https://www.saeindia.org/apac23/",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://www.saeindia.org/apac23/",
+      "audience": {
+        "value": 2000,
+        "basis": "expected",
+        "note": "SAE India regional automotive engineering conference"
+      },
+      "last_edition": null,
+      "notes": "Future powertrains, electrification, hydrogen, autonomous/connected mobility, cybersecurity, AI, SDVs, lightweighting, circular economy. Theme: 'Xellerating towards Safe, Secure, Sustainable & Intelligent Mobility'.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "ev-india-expo-2027",
+      "name": "EV India Expo 2027 (7th Edition)",
+      "start": "2027-09-16",
+      "end": "2027-09-18",
+      "location": "India Expo Centre, Greater Noida",
+      "regions": [
+        "Delhi NCR"
+      ],
+      "sectors": [
+        "ev",
+        "battery",
+        "urban"
+      ],
+      "organiser": "Indian Exhibition Services (IES India)",
+      "link": "https://evindiaexpo.in/",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://evindiaexpo.in/",
+      "audience": null,
+      "last_edition": null,
+      "notes": "Electric vehicles, automotive components, battery management, charging equipment, EV software. Co-located with E-Charge Forum 2027 and E-Mobility Awards 2027.",
+      "last_verified": "2026-10-01",
+      "first_seen": "2026-10-01",
+      "approved": true
+    },
+    {
+      "id": "gitex-ai-india-2027",
+      "name": "GITEX AI India 2027",
+      "start": "2027-06-02",
+      "end": "2027-06-04",
+      "location": "BIEC, Bengaluru",
+      "regions": [
+        "Bengaluru"
+      ],
+      "sectors": [
+        "software",
+        "semis",
+        "cyber"
+      ],
+      "organiser": "GITEX (with Govt of Karnataka / K-Tech / Startup Karnataka)",
+      "link": "https://www.gitex-india.com/",
+      "status": "confirmed",
+      "verified_by": "official",
+      "source_url": "https://www.gitex-india.com/",
+      "audience": null,
+      "last_edition": null,
+      "notes": "AI, semiconductors, cloud, cybersecurity, quantum computing, deep tech, space tech.",
       "last_verified": "2026-10-01",
       "first_seen": "2026-10-01",
       "approved": true
