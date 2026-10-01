@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
-"""Monthly free checker for events.json. No API keys, no AI, standard library only.
+"""Free checker for events.json. No API keys, no AI, standard library only.
 
-What it does
-  1. Re-reads each event's own page and looks for dates:
-       - awaiting event, exactly one future date near its name  -> proposes that date (status: tentative)
-       - month-level event, exactly one date inside its month    -> proposes the exact date
-       - exact date still on the page                            -> refreshes last_verified
-       - anything odd (date changed, several dates, page unreadable) -> listed in the report, nothing changed
-  2. Scans listing pages (tools/sources.json) for events that aren't in events.json yet and adds the
-     ones that look like mobility events, in India, with a date in the next 18 months.
-  3. Writes a Markdown report (used as the pull-request description).
+What it does (settings live in tools/settings.json)
+  1. Re-reads each listed event's own page and looks for dates:
+       - awaiting event, exactly one future date near its name   -> sets that date (status: tentative)
+       - month-level event, exactly one date inside its month     -> sets the exact date
+       - exact date still on the page                             -> refreshes last_verified
+       - exact date gone, the page shows exactly one other date within 120 days (and the event's name is
+         on the page)                                             -> moves the event to the new date (status: tentative, noted)
+       - anything else odd (date far away, several dates, page unreadable) -> listed in the report, nothing changed
+  2. Reads the listing pages in tools/sources.json: fills dates for awaiting events and follows date changes of
+     directory-only events. It adds brand-new events only if "add_new_events" is true in settings.json.
+  3. Writes a Markdown report and, when something changed, a dated entry at the top of update-log.md.
 
 Usage:  python3 tools/update.py [--report update-report.md] [--dry-run]
-Nothing is published by this script: the workflow puts the result in a pull request, and merging is the approval.
+The workflow commits the result straight to the repo, so a bad reading can go live: every automatic change is marked
+tentative with a note, and "apply_date_changes": false in settings.json turns the date-moving off.
 """
 import argparse
 import datetime as dt
@@ -30,6 +33,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "events.json"
 SOURCES = ROOT / "tools" / "sources.json"
+SETTINGS = ROOT / "tools" / "settings.json"
+LOG = ROOT / "update-log.md"
+DEFAULTS = {"add_new_events": True, "apply_date_changes": True}
+SHIFT_LIMIT_DAYS = 120  # a genuine reschedule is close to the old date; a date a year away is another edition
 UA = "Mozilla/5.0 (compatible; IndiaMobilityEventsCheck/1.0)"
 MAX_NEW = 15
 MIN_TEXT = 800  # shorter pages are treated as JavaScript-rendered or blocked
@@ -63,8 +70,8 @@ SECTOR_RULES = [
     ("ev", r"\b(ev|evs|e-?mobility|electric (?:vehicle|motor|mobility|bus|scooter|two|three)\w*|charging)\b"),
     ("battery", r"\b(batter(?:y|ies)|energy storage|lithium)\b"),
     ("altfuel", r"\b(bio-?fuel|bio-?energy|hydrogen|ethanol|cng|lng|biogas)\b"),
-    ("components", r"\b(components?|aftermarket|spare parts|automechanika|autotechnicia|auto ?tech\w*)\b"),
-    ("oem", r"\b(auto ?expo|motor ?show|automobile|automotive|vehicles?)\b"),
+    ("components", r"\b(components?|aftermarket|spare parts|automechanika|autotechnicia|auto ?tech\w*|tyres?|tires?)\b"),
+    ("oem", r"\b(auto ?expo|auto ?show|motor ?show|automobile|automotive|vehicles?)\b"),
     ("cv", r"\b(commercial vehicles?|trucks?|buses|bus)\b"),
     ("semis", r"\b(semiconductors?|electronics|pcb)\b"),
     ("software", r"\b(ai|iot|software|connected|autonomous|telematics)\b"),
@@ -205,7 +212,24 @@ def page_url_for(ev):
 STALE = re.compile(r"[^.]*\b(?:not (?:yet )?announced|not been announced|no later edition|dates? (?:are )?not (?:yet )?(?:published|announced)|no 6th edition)[^.]*\.\s*", re.I)
 
 
-def check_event(ev, text, cands, today, rep):
+CHANGED = re.compile(r"Date changed from .*?please confirm\.\s*", re.I)
+
+
+def apply_change(ev, old, new, url, today, link_if_missing=False):
+    """Move an event to a new date range. Always downgraded to tentative and annotated."""
+    (old_s, old_e), (s, e) = old, new
+    ev["start"], ev["end"], ev["status"] = s.isoformat(), e.isoformat(), "tentative"
+    if ev.get("verified_by") in ("tracker", "aggregator"):
+        ev["verified_by"] = "secondary" if "tradeindia" not in url and "10times" not in url else "aggregator"
+    ev["source_url"], ev["last_verified"] = url, today.isoformat()
+    if link_if_missing and not ev.get("link"):
+        ev["link"] = url
+    base = STALE.sub("", CHANGED.sub("", ev.get("notes") or "")).strip()
+    what = "Date set to" if old_s is None else f"Date changed from {fmt_range(old_s, old_e)} to"
+    ev["notes"] = (base + f" {what} {fmt_range(s, e)} (auto-detected {today:%d %b %Y}); please confirm.").strip()
+
+
+def check_event(ev, text, cands, today, rep, cfg=DEFAULTS):
     name, url = ev["name"], page_url_for(ev)
     if len(text) < MIN_TEXT:
         rep["review"].append(f"**{name}**: page looks JavaScript-rendered or blocked, so it can't be checked by script. Check by hand: {url}")
@@ -239,7 +263,11 @@ def check_event(ev, text, cands, today, rep):
             rep["still_ok"] += 1
         elif len(distinct) == 1:
             s, e = distinct[0]
-            rep["review"].append(f"**{name}**: date may have changed. Now {fmt_range(cur_s, cur_e)}, page shows {fmt_range(s, e)}{label} — {url}")
+            if cfg["apply_date_changes"] and found_name and abs((s - cur_s).days) <= SHIFT_LIMIT_DAYS:
+                apply_change(ev, (cur_s, cur_e), (s, e), url, today)
+                rep["proposed"].append(f"**{name}**: date changed from {fmt_range(cur_s, cur_e)} to {fmt_range(s, e)} — [source]({url})")
+            else:
+                rep["review"].append(f"**{name}**: date may have changed. Now {fmt_range(cur_s, cur_e)}, page shows {fmt_range(s, e)}{label} — {url}")
         else:
             rep["review"].append(f"**{name}**: {fmt_range(cur_s, cur_e)} is not visible on the page any more — {url}")
         return
@@ -324,7 +352,7 @@ def parse_listing(raw, base, today):
     return items
 
 
-def add_listings(data, listings, today, rep):
+def add_listings(data, listings, today, rep, cfg=DEFAULTS):
     events = data["events"]
     added = 0
     for src_url, raw in listings:
@@ -333,9 +361,22 @@ def add_listings(data, listings, today, rep):
             match = next((e for e in events if same_event(e["name"], name)), None)
             if match:
                 d = it["dates"]
-                if d and match.get("verified_by") == "aggregator" and match.get("start") and len(match["start"]) == 10 \
-                        and match["start"] != d["start"].isoformat():
-                    rep["review"].append(f"**{match['name']}**: listing now shows {fmt_range(d['start'], d['end'])}, we have {match['start']} — {it['url']}")
+                if not d:
+                    continue
+                if not match.get("start"):  # awaiting: the directory now shows a date
+                    if cfg["apply_date_changes"] and d["start"] <= today + dt.timedelta(days=548):
+                        apply_change(match, (None, None), (d["start"], d["end"]), it["url"], today, link_if_missing=True)
+                        rep["proposed"].append(f"**{match['name']}**: new date {fmt_range(d['start'], d['end'])} from the directory listing — [listing]({it['url']})")
+                elif match.get("verified_by") == "aggregator" and len(match["start"]) == 10 and match["start"] != d["start"].isoformat():
+                    old_s = dt.date.fromisoformat(match["start"])
+                    old_e = dt.date.fromisoformat(match.get("end") or match["start"])
+                    if cfg["apply_date_changes"] and abs((d["start"] - old_s).days) <= SHIFT_LIMIT_DAYS:
+                        apply_change(match, (old_s, old_e), (d["start"], d["end"]), it["url"], today)
+                        rep["proposed"].append(f"**{match['name']}**: date changed from {fmt_range(old_s, old_e)} to {fmt_range(d['start'], d['end'])} (directory listing) — [listing]({it['url']})")
+                    else:
+                        rep["review"].append(f"**{match['name']}**: listing now shows {fmt_range(d['start'], d['end'])}, we have {match['start']} — {it['url']}")
+                continue
+            if not cfg["add_new_events"]:
                 continue
             secs = sectors_for(name)
             if not secs:
@@ -368,7 +409,8 @@ def add_listings(data, listings, today, rep):
 
 
 # ---------------------------------------------------------------- main
-def run(data, sources, today, fetcher=fetch, pause=1.0):
+def run(data, sources, today, fetcher=fetch, pause=1.0, settings=None):
+    cfg = {**DEFAULTS, **(settings or {})}
     rep = {"proposed": [], "new": [], "review": [], "skipped": [], "fetch_failed": [], "nochange": 0, "still_ok": 0, "nopage": []}
     cache = {}
 
@@ -384,6 +426,9 @@ def run(data, sources, today, fetcher=fetch, pause=1.0):
     for ev in data["events"]:
         if ev.get("approved") is False:
             continue
+        if ev.get("end") and ev["end"] < today.isoformat()[:len(ev["end"])]:
+            rep["ended"] = rep.get("ended", 0) + 1  # already over: nothing to check
+            continue
         url = page_url_for(ev)
         if not url:
             rep["nopage"].append(ev["name"])
@@ -396,7 +441,7 @@ def run(data, sources, today, fetcher=fetch, pause=1.0):
             text = to_text(raw)
             page_cache[url] = (text, extract_dates(text, today))
         text, cands = page_cache[url]
-        check_event(ev, text, cands, today, rep)
+        check_event(ev, text, cands, today, rep, cfg)
 
     for url, (err, names) in fails.items():
         more = "…" if len(names) > 3 else ""
@@ -409,7 +454,7 @@ def run(data, sources, today, fetcher=fetch, pause=1.0):
             rep["fetch_failed"].append(f"listing {s['url']} ({err})")
         else:
             listings.append((s["url"], raw))
-    add_listings(data, listings, today, rep)
+    add_listings(data, listings, today, rep, cfg)
     data["meta"]["generated"] = today.isoformat()
     return rep
 
@@ -420,9 +465,10 @@ def render_report(rep, today):
     warn = []
     if rep.get("urls_total") and rep.get("urls_failed", 0) * 2 >= rep["urls_total"]:
         warn = [f"> **Warning:** {rep['urls_failed']} of {rep['urls_total']} event pages could not be fetched. GitHub's servers may be blocked by these sites, so treat this month's result as incomplete.", ""]
-    lines = [f"## Monthly events check, {today:%d %b %Y}", "", *warn,
-             "Merge this pull request to publish the changes below. To reject one, edit `events.json` in this branch before merging.", "",
-             f"Checked automatically. {rep['still_ok']} exact dates still visible on their pages, {rep['nochange']} pages with nothing new.", ""]
+    lines = [f"## Events check, {today:%d %b %Y}", "", *warn,
+             "Changes under *Dates updated* and *New events added* were applied automatically and are marked tentative in the data. "
+             "Items under *Needs a look* were left unchanged.", "",
+             f"{rep['still_ok']} exact dates still visible on their pages, {rep['nochange']} pages with nothing new.", ""]
     lines += sec("New events added", rep["new"])
     lines += sec("Dates updated", rep["proposed"])
     lines += sec("Needs a look (nothing was changed)", rep["review"])
@@ -434,6 +480,28 @@ def render_report(rep, today):
     return "\n".join(lines)
 
 
+LOG_HEAD = "# Update log\n\nChanges the automatic check made to events.json, newest first. Everything listed here is marked tentative on the site until you confirm it.\n\n"
+
+
+def log_entry(rep, today):
+    rows = []
+    for title, key in (("Dates updated", "proposed"), ("New events added", "new")):
+        if rep.get(key):
+            rows += [f"**{title}**", *(f"- {r}" for r in rep[key]), ""]
+    return f"## {today:%d %b %Y}\n\n" + "\n".join(rows) + "\n" if rows else ""
+
+
+def update_log(path, entry, today):
+    if not entry:
+        return
+    old = path.read_text(encoding="utf-8") if path.exists() else ""
+    body = old[len(LOG_HEAD):] if old.startswith(LOG_HEAD) else old
+    # a second run on the same day replaces that day's entry
+    body = re.sub(rf"^## {today:%d %b %Y}\n.*?(?=^## |\Z)", "", body, flags=re.S | re.M)
+    lines = (entry + body).splitlines()[:400]
+    path.write_text(LOG_HEAD + "\n".join(lines).rstrip() + "\n", encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--report", default="update-report.md")
@@ -442,12 +510,14 @@ def main():
     today = dt.date.today()
     data = json.loads(DATA.read_text(encoding="utf-8"))
     sources = json.loads(SOURCES.read_text(encoding="utf-8")) if SOURCES.exists() else {}
-    rep = run(data, sources, today)
+    settings = json.loads(SETTINGS.read_text(encoding="utf-8")) if SETTINGS.exists() else {}
+    rep = run(data, sources, today, settings=settings)
     report = render_report(rep, today)
     print(report)
     Path(a.report).write_text(report + "\n", encoding="utf-8")
     if not a.dry_run:
         DATA.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        update_log(LOG, log_entry(rep, today), today)
     return 0
 
 
