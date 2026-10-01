@@ -1,20 +1,27 @@
-name: Monthly events check
+name: Check events and publish the site
 
+# Every Monday (09:00 IST) the checker looks for date changes and announcements on the listed events and
+# commits what it finds straight to the repo. The site is then published by the "deploy" job below.
+# The same deploy job also runs whenever you upload or edit a file, so your own uploads go live too.
 on:
   schedule:
-    - cron: "30 3 1 * *"   # 09:00 IST on the 1st of every month
-  workflow_dispatch:        # lets you run it by hand from the Actions tab
+    - cron: "30 3 * * 1"
+  push:
+    branches: [main, master]
+  workflow_dispatch:           # lets you run it by hand from the Actions tab
 
 permissions:
   contents: write
-  pull-requests: write
+  pages: write
+  id-token: write
 
 concurrency:
-  group: monthly-events-check
+  group: events-site
   cancel-in-progress: false
 
 jobs:
   check:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -24,29 +31,61 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Look for new dates and new listings
+      - name: Look for date changes and announcements
         run: python tools/update.py --report update-report.md
 
       - name: Validate and refresh the built-in snapshot
         run: python tools/build.py
 
-      - name: Open the monthly pull request
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Show the report on the run page
+        run: cat update-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Save any changes to the repo
         run: |
-          MONTH=$(date -u +%Y-%m)
-          BRANCH="events-update-$MONTH"
-          BASE=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
           git config user.name "events-bot"
           git config user.email "events-bot@users.noreply.github.com"
-          git checkout -B "$BRANCH"
           git add events.json index.html
+          if [ -f update-log.md ]; then git add update-log.md; fi
           if git diff --cached --quiet; then
-            echo "Nothing changed since the last run; no pull request needed."
+            echo "Nothing changed; nothing to save."
             exit 0
           fi
-          git commit -m "Monthly events check $MONTH"
-          git push --force origin "$BRANCH"
-          gh pr create --base "$BASE" --head "$BRANCH" \
-            --title "Events update $(date -u '+%B %Y')" --body-file update-report.md \
-            || gh pr edit "$BRANCH" --body-file update-report.md
+          git commit -m "Automatic events check $(date -u +%Y-%m-%d)"
+          BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          if ! git pull --rebase origin "$BRANCH"; then
+            git rebase --abort || true
+            echo "Someone changed the files at the same moment. Skipping; the next run will redo this check."
+            exit 0
+          fi
+          git push origin "HEAD:$BRANCH"
+
+  deploy:
+    needs: check
+    # run even when the check was skipped (your own uploads) or failed (the site must still publish)
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}   # the newest files, including the check's commit
+
+      - name: Validate the data and refresh the built-in snapshot
+        run: python3 tools/build.py
+
+      - name: Collect the site files
+        run: |
+          mkdir _site
+          cp index.html events.json config.js _site/
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
