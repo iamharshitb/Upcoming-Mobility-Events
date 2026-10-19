@@ -2,6 +2,11 @@
 
 Changes the automatic check made to events.json, newest first. Everything listed here is marked tentative on the site until you confirm it.
 
+## 19 Oct 2026
+
+**Dates updated**
+- **India Electronics Expo + INDIASOFT 2027 (12th Edition)**: date changed from 23-25 Mar 2027 to 24-25 Mar 2027 — [source](https://www.indiaelectronicsexpo.com)
+
 ## 05 Oct 2026
 
 **Dates updated**
