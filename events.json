@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "India Mobility Events",
-    "generated": "2026-10-19",
+    "generated": "2026-10-26",
     "schema_version": 1,
     "sector_groups": [
       {
@@ -179,7 +179,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Listed on TradeIndia only; organiser and venue not stated. Verify before relying on it. Date changed from 5 Oct 2026 to 29 Jan 2027 (auto-detected 05 Oct 2026); please confirm.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -474,7 +474,7 @@
       },
       "last_edition": null,
       "notes": "Organiser expects 50,000+ visitors and 1,600+ exhibitors from 60+ countries.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -523,7 +523,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Name as listed on SAEINDIA's event calendar.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -553,7 +553,7 @@
       },
       "last_edition": null,
       "notes": "Organiser cites 250+ exhibitors and 25,000+ visitors. Assumed to be the tracker's 'Auto EV India' (Bengaluru) row, which had no organiser or date. Date changed from 9-11 Dec 2026 to 10-11 Dec 2026 (auto-detected 05 Oct 2026); please confirm.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -602,7 +602,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Dates from TradeIndia. evexpo.in showed an unrelated 20 Dec entry with no year and no 2026 dates; confirm with the organiser.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -712,7 +712,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Dates from exhibitor Qimarox's event page. Confirm on the LogiMAT India site.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -762,7 +762,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "SAEINDIA calendar gives the month only. Exact date auto-detected (6 Feb 2027); please confirm.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -793,7 +793,7 @@
       },
       "last_edition": null,
       "notes": "Co-located shows include AI Bharat Expo, IoT India Expo, Smart Mobility India Expo and Bharat Future Cities Expo. 2026 edition had 1,022 exhibitors and 280 speakers.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -818,7 +818,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Replaces the tracker's 'Smart Cities India Expo' row (site redirects to Bharat Future Cities). Runs alongside Convergence India.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -872,7 +872,7 @@
       },
       "last_edition": null,
       "notes": "May be a different event from the tracker's New Delhi 'Cyber Security India Expo' row; confirm.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -978,7 +978,7 @@
       },
       "last_edition": "22-25 Jul 2026, Bombay Exhibition Centre",
       "notes": "Auto-detected 2-5 Jun 2027 on the page; please confirm.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -1050,7 +1050,7 @@
       "audience": null,
       "last_edition": "Jun 2026, New Delhi (per 10times)",
       "notes": "Separate from the Mumbai India Warehousing & Logistics Show. A 2027 edition is listed without dates. Date set to 24 Jun 2027 (auto-detected 05 Oct 2026); please confirm.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-09-30",
       "approved": true
     },
@@ -1456,7 +1456,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Co-located with Auto EV Bharat 2026 at KTPO. EV, battery, embedded software, vehicle engineering.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     },
@@ -1504,7 +1504,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Threat intelligence, malware research, AI security, cloud security, digital forensics.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     },
@@ -1528,7 +1528,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Security research, AI security, 5G, Android hacking, protocol reverse engineering. Trainings 24–26 Feb; conference 27–28 Feb.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     },
@@ -1601,7 +1601,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Full supply chain — air, sea, rail, road, warehousing, freight, e-commerce logistics, cold chain.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     },
@@ -1625,7 +1625,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Co-located with India Material Handling & Logistics Show 2027.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     },
@@ -1676,7 +1676,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Power generation, T&D, renewable energy, EV ecosystem, industrial automation, smart grids.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     },
@@ -1702,7 +1702,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "AI/GenAI, robotics, automation, drones, IoT, cloud, cybersecurity.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     },
@@ -1752,7 +1752,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "GCC leadership, AI transformation, technology strategy. One-day summit.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     },
@@ -1802,7 +1802,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Professional development programme. Vehicle dynamics simulation, virtual prototyping. Month confirmed, exact dates tentative.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     },
@@ -1859,7 +1859,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "Electric vehicles, automotive components, battery management, charging equipment, EV software. Co-located with E-Charge Forum 2027 and E-Mobility Awards 2027.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     },
@@ -1885,7 +1885,7 @@
       "audience": null,
       "last_edition": null,
       "notes": "AI, semiconductors, cloud, cybersecurity, quantum computing, deep tech, space tech.",
-      "last_verified": "2026-10-19",
+      "last_verified": "2026-10-26",
       "first_seen": "2026-10-01",
       "approved": true
     }
