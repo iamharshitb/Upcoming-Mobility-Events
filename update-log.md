@@ -2,6 +2,12 @@
 
 Changes the automatic check made to events.json, newest first. Everything listed here is marked tentative on the site until you confirm it.
 
+## 02 Nov 2026
+
+**Dates updated**
+- **Asia Pacific Automotive Engineering Conference (APAC), 23rd edition**: date changed from 12-14 Nov 2026 to 13-14 Nov 2026 — [source](https://saeindia.org/apac23/)
+- **Asia Pacific Automotive Engineering Conference (APAC 23) — SAE India**: date changed from 12-14 Nov 2026 to 13-14 Nov 2026 — [source](https://www.saeindia.org/apac23/)
+
 ## 19 Oct 2026
 
 **Dates updated**
